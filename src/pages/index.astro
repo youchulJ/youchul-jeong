@@ -9,7 +9,7 @@ const cv = {
   github: "https://github.com/youchulJ",
   researchgate: "https://www.researchgate.net/profile/Youchul-Jeong-2",
   twitter: "",
-  about: "Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (Marine Remote Sensing Group - MRSG). He is dedicated to addressing global marine environmental challenges through advanced geospatial technologies, specializing in the analysis and visualization of satellite and UAV data.\n\nHis research focuses on developing a multi-scale detection framework for floating marine debris, integrating multi-sensor satellite data with high-resolution UAV imagery to provide actionable insights into plastic pollution. He holds both a Bachelor's and a Master of Science in Oceanography from Pusan National University in South Korea, where his early work established a foundation in multispectral sensing and deep learning for macro-litter monitoring.\n\nCurrently based in Lesbos, Greece, Youchul's academic mission extends beyond data collection; he aims to leverage remote sensing and image processing to develop scalable, real-world solutions for ocean conservation. His work seeks to bridge the gap between complex orbital observations and practical environmental management, driven by a deep commitment to protecting marine ecosystems and engaging with the global scientific community.",
+  about: "Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (Marine Remote Sensing Group - MRSG) and an External PhD Candidate with the Machine Learning in Earth Observation (MEO) Lab at the University of Bonn. His research develops multi-scale detection frameworks for floating marine debris, integrating multi-sensor satellite data with high-resolution UAV imagery to provide actionable insights into plastic pollution. Working at the intersection of marine remote sensing, machine learning, and image processing, he aims to bridge complex orbital observations with practical environmental management and scalable ocean conservation solutions.",
   experience: [
     {
       position: "Drone Analysis of Beach Safety and Beachgoer Behavior",
@@ -94,7 +94,7 @@ const cv = {
   publications: [
     {
       title: "A Study on Monitoring Floating Marine Macro-Litter using a Multi-Spectral Sensor and Classification based on Deep Learning",
-      authors: "Jeong et al.",
+      authors: "Youchul Jeong, Jisun Shin, Jong-Seok Lee, Ji-Yeon Baek, Daniel Schläpfer, Sin-Young Kim, Jin-Yong Jeong, and Young-Heon Jo",
 	  journal: "Remote Sensing",
       year: "2024",
       month: "December",
@@ -102,7 +102,7 @@ const cv = {
     },
     {
       title: "Decomposition of Submesoscale Ocean Wave and Current Derived from UAV-Based Observation",
-      authors: "Lee et al.",
+      authors: "Sin-Young Kim, Jong-Seok Lee, Youchul Jeong, and Young-Heon Jo",
 	  journal: "Remote Sensing",
       year: "2024",
       month: "May",
@@ -159,19 +159,39 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 		<meta name="generator" content={Astro.generator} />
 		<title>{cv.name} - CV</title>
 		<style>
-			@import url('https://fonts.googleapis.com/css?family=Inter:400,500,600,700,800,900');
+			@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap');
 			
 			* {
 				margin: 0;
 				padding: 0;
+				box-sizing: border-box;
 			}
 			
+			:root {
+				--paper: #fbfaf7;
+				--surface: #ffffff;
+				--surface-soft: #f4f1ea;
+				--ink: #161616;
+				--muted: #64645f;
+				--subtle: #8f8d86;
+				--line: #ded9cd;
+				--line-strong: #c5bdad;
+				--accent: #1f6f63;
+				--accent-soft: #e4f3ee;
+				--code: #f7f4ed;
+				--shadow: 0 24px 70px rgba(22, 22, 22, 0.08);
+			}
+
 			body {
-				background: #1A202C;
-				color: #E2E8F0;
-				font-family: 'Inter', sans-serif;
+				background:
+					linear-gradient(rgba(222, 217, 205, 0.55) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(222, 217, 205, 0.55) 1px, transparent 1px),
+					var(--paper);
+				background-size: 36px 36px;
+				color: var(--ink);
+				font-family: 'Source Sans 3', sans-serif;
 				font-size: 14px;
-				line-height: 1.5;
+				line-height: 1.58;
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;
 			}
@@ -181,14 +201,15 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			a {
-				color: #4299E1;
+				color: var(--accent);
 				text-decoration: none;
 			}
 			
 			a:hover {
+				color: var(--ink);
 				text-decoration: underline;
-				color: #63B3ED;
-				transition: all 0.4s ease-in-out;
+				text-decoration-thickness: 1px;
+				text-underline-offset: 4px;
 			}
 			
 			p {
@@ -196,47 +217,54 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.wrapper {
-				background: #2D3748;
-				max-width: 960px;
-				margin: 0 auto;
+				background: var(--surface);
+				max-width: 1008px;
+				margin: 28px auto;
 				position: relative;
-				box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-				min-height: 100vh;
+				box-shadow: var(--shadow);
+				min-height: calc(100vh - 56px);
 				display: flex;
+				border: 1px solid var(--line);
 			}
 			
 			.sidebar-wrapper {
 				position: absolute;
 				right: 0;
 				top: 0;
-				width: 280px;
+				width: 288px;
 				height: 100%;
-				background: #2D3748;
-				color: #E2E8F0;
+				background: var(--surface-soft);
+				color: var(--ink);
 				overflow-y: auto;
+				border-left: 1px solid var(--line);
 			}
 			.sidebar-wrapper a {
-				color: #E2E8F0;
+				color: var(--ink);
 			}
 			
 			.sidebar-wrapper .profile-container {
-				padding: 30px;
-				background: rgba(0, 0, 0, 0.3);
+				padding: 30px 25px 25px;
+				background: var(--surface);
+				color: var(--ink);
+				border-bottom: 1px solid var(--line);
 				text-align: center;
-				color: #E2E8F0;
 			}
 			
 			.sidebar-wrapper .name {
-				font-size: 28px;
+				font-size: 31px;
 				font-weight: 800;
+				line-height: 1;
 				margin-top: 0;
-				margin-bottom: 8px;
+				margin-bottom: 12px;
+				letter-spacing: 0;
 			}
 			
 			.sidebar-wrapper .tagline {
-				color: rgba(226, 232, 240, 0.7);
-				font-size: 14px;
-				font-weight: 500;
+				color: var(--muted);
+				font-family: 'IBM Plex Mono', monospace;
+				font-size: 11px;
+				font-weight: 600;
+				line-height: 1.6;
 				margin-top: 0;
 				margin-bottom: 0;
 			}
@@ -259,15 +287,18 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			
 			.sidebar-wrapper .container-block-title {
 				text-transform: uppercase;
-				font-size: 14px;
+				font-family: 'IBM Plex Mono', monospace;
+				font-size: 11px;
 				font-weight: 700;
 				margin-top: 0;
-				margin-bottom: 12px;
-				color: #E2E8F0;
+				margin-bottom: 14px;
+				color: var(--muted);
+				letter-spacing: 0.12em;
 			}
 			
 			.sidebar-wrapper .container-block {
-				padding: 20px 25px;
+				padding: 22px 25px;
+				border-bottom: 1px solid var(--line);
 			}
 			
 			.sidebar-wrapper .item {
@@ -282,16 +313,18 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				font-size: 13px;
 				font-weight: 700;
 				margin-bottom: 3px;
+				line-height: 1.4;
 			}
 			
 			.sidebar-wrapper .meta {
-				color: rgba(226, 232, 240, 0.8);
+				color: var(--muted);
 				margin-bottom: 2px;
 				font-size: 12px;
 			}
 			
 			.sidebar-wrapper .time {
-				color: rgba(226, 232, 240, 0.6);
+				color: var(--subtle);
+				font-family: 'IBM Plex Mono', monospace;
 				font-size: 11px;
 				margin-bottom: 0;
 			}
@@ -302,8 +335,14 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.sidebar-wrapper .skills-list li {
-				margin-bottom: 6px;
+				display: inline-flex;
+				margin: 0 6px 8px 0;
+				padding: 3px 7px;
+				border: 1px solid var(--line);
+				background: var(--surface);
+				border-radius: 999px;
 				font-size: 12px;
+				line-height: 1.2;
 			}
 			
 			.sidebar-wrapper .skills-list li:last-child {
@@ -317,12 +356,13 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.sidebar-wrapper .languages-list li {
-				margin-bottom: 8px;
+				margin-bottom: 10px;
 				font-size: 12px;
-				color: #E2E8F0;
+				color: var(--ink);
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				gap: 12px;
 			}
 			
 			.sidebar-wrapper .languages-list li:last-child {
@@ -334,7 +374,8 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.sidebar-wrapper .languages-list .language-level {
-				color: #4299E1;
+				color: var(--accent);
+				font-family: 'IBM Plex Mono', monospace;
 				font-weight: 600;
 			}
 			
@@ -349,7 +390,11 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				display: flex;
 				align-items: center;
 				flex-wrap: nowrap;
-				gap: 8px;
+				gap: 10px;
+				padding: 8px 9px;
+				background: var(--code);
+				border: 1px solid var(--line);
+				border-radius: 8px;
 			}
 			
 			.sidebar-wrapper .contact-list li:last-child {
@@ -358,14 +403,16 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			
 			.sidebar-wrapper .contact-list .icon {
 				flex-shrink: 0;
-				font-size: 18px;
-				width: 20px;
+				font-size: 11px;
+				width: 44px;
 				text-align: center;
 				line-height: 1;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+				font-family: 'IBM Plex Mono', monospace;
+				color: var(--accent);
+				font-weight: 700;
 			}
 			
 			.sidebar-wrapper .contact-list .text {
@@ -374,35 +421,34 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
-				font-size: 13px;
-				font-family: inherit;
+				font-size: 12px;
+				font-family: 'IBM Plex Mono', monospace;
 				line-height: 1.4;
 			}
 			
 			.sidebar-wrapper .contact-list a {
-				color: #CBD5E0;
+				color: var(--ink);
 				text-decoration: none;
-				font-size: 13px;
-				font-family: inherit;
+				font-size: 12px;
+				font-family: 'IBM Plex Mono', monospace;
 				line-height: 1.4;
-				transition: color 0.3s ease;
 			}
 			
 			.sidebar-wrapper .contact-list a:hover {
-				color: #4299E1;
+				color: var(--accent);
 				text-decoration: none;
 			}
 			
 			.main-wrapper {
-				background: #1A202C;
-				padding: 40px 50px 40px 40px;
-				margin-right: 280px;
+				background: var(--surface);
+				padding: 40px 50px;
+				margin-right: 288px;
 				flex: 1;
 				min-height: 100vh;
 			}
 			
 			.main-wrapper .section {
-				margin-bottom: 25px;
+				margin-bottom: 32px;
 			}
 			
 			.main-wrapper .section:last-child {
@@ -412,61 +458,65 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			.main-wrapper .section-header {
 				display: flex;
 				justify-content: space-between;
-				align-items: center;
+				align-items: flex-start;
 				cursor: pointer;
 				user-select: none;
+				border-top: 1px solid var(--line);
+				padding-top: 20px;
 			}
 			
 			.main-wrapper .section-header:hover .section-title {
-				color: #4299E1;
+				color: var(--accent);
 			}
 			
 			.main-wrapper .section-arrow {
-				font-size: 16px;
-				color: #718096;
-				transition: transform 0.3s ease;
-				transform: rotate(0deg);
-			}
-			
-			.main-wrapper .section-header.collapsed .section-arrow {
-				transform: rotate(-90deg);
+				font-family: 'IBM Plex Mono', monospace;
+				font-size: 14px;
+				color: var(--subtle);
+				margin-top: 1px;
 			}
 			
 			.main-wrapper .section-title {
 				text-transform: uppercase;
-				font-size: 18px;
-				font-weight: 600;
-				color: #E2E8F0;
+				font-family: 'IBM Plex Mono', monospace;
+				font-size: 12px;
+				font-weight: 700;
+				color: var(--ink);
 				margin-top: 0;
-				margin-bottom: 15px;
-				padding-bottom: 8px;
-				border-bottom: 1px solid #4A5568;
+				margin-bottom: 18px;
+				padding-bottom: 0;
+				border-bottom: 0;
+				letter-spacing: 0.12em;
+			}
+
+			.main-wrapper .icon-holder {
+				color: var(--accent);
+				margin-right: 8px;
 			}
 			
 			.main-wrapper .summary p {
-				color: #E2E8F0;
-				line-height: 1.6;
+				color: var(--ink);
+				line-height: 1.64;
 				margin-bottom: 0;
-				font-size: 14px;
-				text-align: justify;
-				text-justify: inter-word;
+				font-size: 15px;
+				text-align: left;
+				max-width: 680px;
 			}
 			
 			.main-wrapper .summary p a {
-				color: #4299E1;
+				color: var(--accent);
 				text-decoration: none;
-				transition: color 0.3s ease;
 			}
 			
 			.main-wrapper .summary p a:hover {
-				color: #63B3ED;
+				color: var(--ink);
 				text-decoration: underline;
 			}
 			
 			.main-wrapper .experience {
-				margin-bottom: 15px;
-				padding-bottom: 15px;
-				border-bottom: 1px solid #2D3748;
+				margin-bottom: 18px;
+				padding-bottom: 18px;
+				border-bottom: 1px solid var(--line);
 			}
 			
 			.main-wrapper .experience:last-child {
@@ -481,14 +531,15 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			
 			.main-wrapper .experience .title {
 				font-size: 15px;
-				font-weight: 600;
+				font-weight: 700;
 				margin-top: 0;
-				margin-bottom: 3px;
-				color: #E2E8F0;
+				margin-bottom: 4px;
+				color: var(--ink);
+				line-height: 1.35;
 			}
 			
 			.main-wrapper .experience .meta {
-				color: #E2E8F0;
+				color: var(--accent);
 				font-weight: 600;
 				margin-bottom: 2px;
 				font-size: 13px;
@@ -505,32 +556,32 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.main-wrapper .experience .journal {
-				color: #4299E1;
-				font-size: 12px;
+				color: var(--muted);
+				font-size: 13px;
 				margin-bottom: 2px;
 			}
 			
 			.main-wrapper .experience .time {
-				color: #718096;
+				color: var(--subtle);
+				font-family: 'IBM Plex Mono', monospace;
 				margin-bottom: 8px;
 				font-size: 12px;
 			}
 			
 			.main-wrapper .experience .description {
-				color: #E2E8F0;
-				line-height: 1.5;
+				color: var(--muted);
+				line-height: 1.56;
 				margin-bottom: 0;
-				font-size: 13px;
+				font-size: 14px;
 			}
 			
 			.main-wrapper .experience .title a {
-				color: #E2E8F0;
+				color: var(--ink);
 				text-decoration: none;
-				transition: color 0.3s ease;
 			}
 			
 			.main-wrapper .experience .title a:hover {
-				color: #4299E1;
+				color: var(--accent);
 				text-decoration: none;
 			}
 			
@@ -543,20 +594,21 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.main-wrapper .year-title {
-				font-size: 16px;
+				font-size: 15px;
 				font-weight: 700;
-				color: #4299E1;
+				color: var(--accent);
 				margin-bottom: 12px;
 				padding-bottom: 4px;
-				border-bottom: 1px solid #4A5568;
+				border-bottom: 1px solid var(--line);
 				text-transform: uppercase;
-				letter-spacing: 0.5px;
+				font-family: 'IBM Plex Mono', monospace;
+				letter-spacing: 0;
 			}
 			
 			.main-wrapper .teaching {
-				margin-bottom: 15px;
-				padding-bottom: 15px;
-				border-bottom: 1px solid #2D3748;
+				margin-bottom: 18px;
+				padding-bottom: 18px;
+				border-bottom: 1px solid var(--line);
 			}
 			
 			.main-wrapper .teaching:last-child {
@@ -573,28 +625,30 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				font-size: 15px;
 				font-weight: 600;
 				margin-top: 0;
-				margin-bottom: 3px;
-				color: #E2E8F0;
+				margin-bottom: 4px;
+				color: var(--ink);
+				line-height: 1.35;
 			}
 			
 			.main-wrapper .teaching .meta {
-				color: #4299E1;
+				color: var(--accent);
 				font-weight: 600;
 				margin-bottom: 2px;
 				font-size: 13px;
 			}
 			
 			.main-wrapper .teaching .time {
-				color: #718096;
+				color: var(--subtle);
+				font-family: 'IBM Plex Mono', monospace;
 				margin-bottom: 8px;
 				font-size: 12px;
 			}
 			
 			.main-wrapper .teaching .description {
-				color: #E2E8F0;
-				line-height: 1.5;
+				color: var(--muted);
+				line-height: 1.56;
 				margin-bottom: 0;
-				font-size: 13px;
+				font-size: 14px;
 			}
 			
 			.main-wrapper .projects-section {
@@ -608,7 +662,7 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			.main-wrapper .projects .item {
 				margin-bottom: 15px;
 				padding-bottom: 15px;
-				border-bottom: 1px solid #2D3748;
+				border-bottom: 1px solid var(--line);
 			}
 			
 			.main-wrapper .projects .item:last-child {
@@ -623,22 +677,21 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				margin-top: 0;
 				margin-bottom: 3px;
 				line-height: 1.4;
-				color: #E2E8F0;
+				color: var(--ink);
 			}
 			
 			.main-wrapper .projects .title a {
-				color: #E2E8F0;
+				color: var(--ink);
 				text-decoration: none;
-				transition: color 0.3s ease;
 			}
 			
 			.main-wrapper .projects .title a:hover {
-				color: #4299E1;
+				color: var(--accent);
 				text-decoration: none;
 			}
 			
 			.main-wrapper .projects .description {
-				color: #A0AEC0;
+				color: var(--muted);
 				margin-bottom: 2px;
 				line-height: 1.4;
 				font-size: 12px;
@@ -655,12 +708,12 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			.main-wrapper .skill-item .title {
 				font-size: 14px;
 				font-weight: 700;
-				color: #E2E8F0;
+				color: var(--ink);
 				margin-bottom: 10px;
 			}
 			
 			.main-wrapper .skill-item .keywords {
-				color: #E2E8F0;
+				color: var(--ink);
 			}
 			
 			.main-wrapper .languages-list {
@@ -677,8 +730,11 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			
 			@media (max-width: 991px) {
 				.wrapper {
-					background: #2D3748;
+					background: var(--surface);
 					flex-direction: column;
+					margin: 0;
+					border-left: 0;
+					border-right: 0;
 				}
 				
 				.sidebar-wrapper {
@@ -690,8 +746,9 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				
 				.main-wrapper {
 					margin-right: 0;
-					padding: 30px;
+					padding: 34px 28px;
 					order: 1;
+					min-height: 0;
 				}
 			}
 			
@@ -701,8 +758,12 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				}
 				
 				.main-wrapper {
-					padding: 20px;
+					padding: 28px 20px;
 					order: 1;
+				}
+
+				.main-wrapper .summary p {
+					font-size: 15px;
 				}
 				
 				.main-wrapper .summary p {
@@ -724,11 +785,11 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				}
 				
 				.sidebar-wrapper .profile-container {
-					padding: 20px;
+					padding: 28px 20px;
 				}
 				
 				.sidebar-wrapper .container-block {
-					padding: 20px 25px;
+					padding: 20px;
 				}
 			}
 		</style>
@@ -745,31 +806,31 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 					<ul class="contact-list">
 						{cv.email && (
 							<li class="contact-item">
-								<span class="icon">✉</span>
+								<span class="icon">mail</span>
 								<a href={`mailto:${cv.email}`} class="text">{cv.email}</a>
 							</li>
 						)}
 						{cv.linkedin && (
 							<li class="contact-item">
-								<span class="icon">🔗</span>
+								<span class="icon">in</span>
 								<a href={`https://www.linkedin.com/in/${cv.linkedin}`} target="_blank" rel="noopener noreferrer" class="text">LinkedIn</a>
 							</li>
 						)}
 						{cv.github && (
 							<li class="contact-item">
-								<span class="icon">🐙</span>
+								<span class="icon">git</span>
 								<a href={cv.github} target="_blank" rel="noopener noreferrer" class="text">GitHub</a>
 							</li>
 						)}
 						{cv.researchgate && (
 							<li class="contact-item">
-								<span class="icon">🔬</span>
+								<span class="icon">pub</span>
 								<a href={cv.researchgate} target="_blank" rel="noopener noreferrer" class="text">ResearchGate</a>
 							</li>
 						)}
 						<li class="contact-item">
-							<span class="icon">⭐</span>
-							<a href="/youchul-jeong-cv/Youchul%20Jeong%20CV.pdf" target="_blank" rel="noopener noreferrer" class="text">Youchul Jeong CV.pdf</a>
+							<span class="icon">cv</span>
+							<a href="/youchul-jeong-cv/Youchul%20Jeong%20CV.pdf" target="_blank" rel="noopener noreferrer" class="text">Download CV</a>
 						</li>
 					</ul>
 				</div><!--//contact-container-->
@@ -810,18 +871,18 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			<div class="main-wrapper">
 				<section class="section summary-section">
 					<h2 class="section-title">
-						<span class="icon-holder">👋</span>
+						<span class="icon-holder">01</span>
 						Profile
 					</h2>
 					<div class="summary">
-						<p>Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (<a href="https://mrsg.aegean.gr/" target="_blank" rel="noopener noreferrer">Marine Remote Sensing Group - MRSG</a>), specializing in advanced geospatial technologies for marine environmental challenges. His research develops multi-scale detection frameworks for floating marine debris, integrating multi-sensor satellite data with high-resolution UAV imagery to provide actionable insights into plastic pollution. Currently based in Lesbos, Greece, he aims to leverage remote sensing and image processing to develop scalable solutions for ocean conservation, bridging the gap between orbital observations and practical environmental management.</p>
+						<p>Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (<a href="https://mrsg.aegean.gr/" target="_blank" rel="noopener noreferrer">Marine Remote Sensing Group - MRSG</a>) and an External PhD Candidate with the <a href="https://meo-lab.com/" target="_blank" rel="noopener noreferrer">Machine Learning in Earth Observation (MEO) Lab</a> at the University of Bonn. His research develops multi-scale detection frameworks for floating marine debris, integrating multi-sensor satellite data with high-resolution UAV imagery to provide actionable insights into plastic pollution. Working at the intersection of marine remote sensing, machine learning, and image processing, he aims to bridge complex orbital observations with practical environmental management and scalable ocean conservation solutions.</p>
 					</div><!--//summary-->
 				</section><!--//section-->
 				
 				<section class="section experiences-section">
-					<div class="section-header" onclick="toggleMainSection('working')">
+					<div class="section-header" data-section="working">
 						<h2 class="section-title">
-							<span class="icon-holder">💼</span>
+							<span class="icon-holder">02</span>
 							Working Experience
 						</h2>
 						<span class="section-arrow">▼</span>
@@ -831,21 +892,7 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 							<div class="experience">
 								<div class="item">
 									<h3 class="title">{item.position}</h3>
-									<h4 class="meta">
-										{item.institution.includes('Pusan National University') ? (
-											<>
-												<div><span class="department">Marine Research Institute</span></div>
-												<div><span class="university">Pusan National University</span></div>
-											</>
-										) : item.institution.includes('University of the Aegean') ? (
-											<>
-												<div><span class="department">Department of Marine Science</span></div>
-												<div><span class="university">University of the Aegean</span></div>
-											</>
-										) : (
-											item.institution
-										)}
-									</h4>
+									<h4 class="meta">{item.institution}</h4>
 									<div class="time">{item.period}</div>
 									<p class="description">{item.description}</p>
 								</div><!--//item-->
@@ -855,9 +902,9 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				</section><!--//section-->
 				
 				<section class="section experiences-section">
-					<div class="section-header" onclick="toggleMainSection('research')">
+					<div class="section-header" data-section="research">
 						<h2 class="section-title">
-							<span class="icon-holder">🔬</span>
+							<span class="icon-holder">03</span>
 							Research Experience
 						</h2>
 						<span class="section-arrow">▼</span>
@@ -877,9 +924,9 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				</section><!--//section-->
 				
 				<section class="section experiences-section">
-					<div class="section-header" onclick="toggleMainSection('teaching')">
+					<div class="section-header" data-section="teaching">
 						<h2 class="section-title">
-							<span class="icon-holder">🎓</span>
+							<span class="icon-holder">04</span>
 							Teaching Experience
 						</h2>
 						<span class="section-arrow">▼</span>
@@ -899,9 +946,9 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				</section><!--//section-->
 				
 				<section class="section experiences-section">
-					<div class="section-header" onclick="toggleMainSection('publications')">
+					<div class="section-header" data-section="publications">
 						<h2 class="section-title">
-							<span class="icon-holder">📄</span>
+							<span class="icon-holder">05</span>
 							Publications
 						</h2>
 						<span class="section-arrow">▼</span>
@@ -931,60 +978,25 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 		
 		<script>
 			function toggleMainSection(sectionId) {
-				console.log('Toggle called for:', sectionId);
 				const content = document.getElementById(sectionId);
 				const header = content.previousElementSibling;
 				const arrow = header.querySelector('.section-arrow');
-				
-				console.log('Elements found:', !!content, !!header, !!arrow);
-				console.log('Current display:', content.style.display);
-				
-				if (content.style.display === 'none' || content.style.display === '') {
-					// 펼치기
-					content.style.display = 'block';
+
+				if (content.hidden) {
+					content.hidden = false;
 					arrow.textContent = '▼';
 					header.classList.remove('collapsed');
-					console.log('Expanded to block');
 				} else {
-					// 접기
-					content.style.display = 'none';
+					content.hidden = true;
 					arrow.textContent = '▶';
 					header.classList.add('collapsed');
-					console.log('Collapsed to none');
 				}
 			}
-			
-			// 이벤트 리스너로 onclick 대체 (모든 섹션)
-			document.addEventListener('DOMContentLoaded', function() {
-				console.log('DOM loaded, setting up event listeners...');
-				
-				const sections = ['working', 'research', 'teaching', 'publications'];
-				sections.forEach(sectionId => {
-					const header = document.querySelector(`[onclick="toggleMainSection('${sectionId}')"]`);
-					if (header) {
-						header.addEventListener('click', function(e) {
-							e.preventDefault();
-							console.log('Click event triggered for:', sectionId);
-							toggleMainSection(sectionId);
-						});
-						console.log('Event listener added for:', sectionId);
-					} else {
-						console.error('Header not found for:', sectionId);
-					}
+
+			document.querySelectorAll('.section-header[data-section]').forEach((header) => {
+				header.addEventListener('click', () => {
+					toggleMainSection(header.dataset.section);
 				});
-				
-				// Sidebar sections
-				const sidebarHeader = document.querySelector(`[onclick="toggleSidebarSection('sidebar-work')"]`);
-				if (sidebarHeader) {
-					sidebarHeader.addEventListener('click', function(e) {
-						e.preventDefault();
-						console.log('Sidebar click event triggered');
-						toggleSidebarSection('sidebar-work');
-					});
-					console.log('Sidebar event listener added');
-				} else {
-					console.error('Sidebar header not found');
-				}
 			});
 		</script>
 	</body>
