@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # editor settings
 .vscode/
+
+# local source exports from Google Docs
+private/
