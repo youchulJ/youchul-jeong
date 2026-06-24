@@ -41,30 +41,26 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			:root {
-				--paper: #fbfaf7;
+				--paper: #ffffff;
 				--surface: #ffffff;
-				--surface-soft: #f4f1ea;
-				--ink: #161616;
-				--muted: #64645f;
-				--subtle: #8f8d86;
-				--line: #ded9cd;
-				--line-strong: #c5bdad;
-				--accent: #1f6f63;
-				--accent-soft: #e4f3ee;
-				--code: #f7f4ed;
-				--shadow: 0 24px 70px rgba(22, 22, 22, 0.08);
+				--surface-soft: #ffffff;
+				--ink: #111111;
+				--muted: #555555;
+				--subtle: #8a8a8a;
+				--line: #e7e7e7;
+				--line-strong: #111111;
+				--accent: #111111;
+				--accent-soft: #f6f6f6;
+				--code: #f8f8f8;
+				--shadow: none;
 			}
 
 			body {
-				background:
-					linear-gradient(rgba(222, 217, 205, 0.55) 1px, transparent 1px),
-					linear-gradient(90deg, rgba(222, 217, 205, 0.55) 1px, transparent 1px),
-					var(--paper);
-				background-size: 36px 36px;
+				background: var(--paper);
 				color: var(--ink);
 				font-family: 'Source Sans 3', sans-serif;
-				font-size: 14px;
-				line-height: 1.58;
+				font-size: 15px;
+				line-height: 1.55;
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;
 			}
@@ -92,23 +88,22 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			.wrapper {
 				background: var(--surface);
 				max-width: 1008px;
-				margin: 28px auto;
+				margin: 0 auto;
 				position: relative;
 				box-shadow: var(--shadow);
-				min-height: calc(100vh - 56px);
+				min-height: 100vh;
 				display: flex;
-				border: 1px solid var(--line);
+				border: 0;
 			}
 			
 			.sidebar-wrapper {
 				position: absolute;
 				right: 0;
 				top: 0;
-				width: 288px;
+				width: 280px;
 				height: 100%;
 				background: var(--surface-soft);
 				color: var(--ink);
-				overflow-y: auto;
 				border-left: 1px solid var(--line);
 			}
 			.sidebar-wrapper a {
@@ -116,19 +111,19 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.sidebar-wrapper .profile-container {
-				padding: 30px 25px 25px;
+				padding: 42px 0 26px 34px;
 				background: var(--surface);
 				color: var(--ink);
 				border-bottom: 1px solid var(--line);
-				text-align: center;
+				text-align: left;
 			}
 			
 			.sidebar-wrapper .name {
-				font-size: 31px;
-				font-weight: 800;
-				line-height: 1;
+				font-size: 32px;
+				font-weight: 700;
+				line-height: 1.05;
 				margin-top: 0;
-				margin-bottom: 12px;
+				margin-bottom: 10px;
 				letter-spacing: 0;
 			}
 			
@@ -136,7 +131,7 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				color: var(--muted);
 				font-family: 'IBM Plex Mono', monospace;
 				font-size: 11px;
-				font-weight: 600;
+				font-weight: 500;
 				line-height: 1.6;
 				margin-top: 0;
 				margin-bottom: 0;
@@ -146,15 +141,15 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				text-transform: uppercase;
 				font-family: 'IBM Plex Mono', monospace;
 				font-size: 11px;
-				font-weight: 700;
+				font-weight: 600;
 				margin-top: 0;
 				margin-bottom: 14px;
-				color: var(--muted);
-				letter-spacing: 0.12em;
+				color: var(--ink);
+				letter-spacing: 0.08em;
 			}
 			
 			.sidebar-wrapper .container-block {
-				padding: 22px 25px;
+				padding: 24px 0 24px 34px;
 				border-bottom: 1px solid var(--line);
 			}
 			
@@ -192,14 +187,15 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.sidebar-wrapper .skills-list li {
-				display: inline-flex;
-				margin: 0 6px 8px 0;
-				padding: 3px 7px;
-				border: 1px solid var(--line);
-				background: var(--surface);
-				border-radius: 999px;
+				display: block;
+				margin: 0 0 7px 0;
+				padding: 0;
+				border: 0;
+				background: transparent;
+				border-radius: 0;
 				font-size: 12px;
-				line-height: 1.2;
+				line-height: 1.35;
+				font-family: 'IBM Plex Mono', monospace;
 			}
 			
 			.sidebar-wrapper .skills-list li:last-child {
@@ -243,15 +239,15 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.sidebar-wrapper .contact-list li {
-				margin-bottom: 8px;
+				margin-bottom: 10px;
 				display: flex;
 				align-items: center;
 				flex-wrap: nowrap;
 				gap: 10px;
-				padding: 8px 9px;
-				background: var(--code);
-				border: 1px solid var(--line);
-				border-radius: 8px;
+				padding: 0;
+				background: transparent;
+				border: 0;
+				border-radius: 0;
 			}
 			
 			.sidebar-wrapper .contact-list li:last-child {
@@ -261,15 +257,15 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			.sidebar-wrapper .contact-list .icon {
 				flex-shrink: 0;
 				font-size: 11px;
-				width: 44px;
-				text-align: center;
+				width: 38px;
+				text-align: left;
 				line-height: 1;
 				display: flex;
 				align-items: center;
-				justify-content: center;
+				justify-content: flex-start;
 				font-family: 'IBM Plex Mono', monospace;
-				color: var(--accent);
-				font-weight: 700;
+				color: var(--subtle);
+				font-weight: 500;
 			}
 			
 			.sidebar-wrapper .contact-list .text {
@@ -298,14 +294,14 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			
 			.main-wrapper {
 				background: var(--surface);
-				padding: 40px 50px;
-				margin-right: 288px;
+				padding: 42px 48px 56px 34px;
+				margin-right: 280px;
 				flex: 1;
 				min-height: 100vh;
 			}
 			
 			.main-wrapper .section {
-				margin-bottom: 32px;
+				margin-bottom: 34px;
 			}
 			
 			.main-wrapper .section:last-child {
@@ -319,16 +315,16 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				cursor: pointer;
 				user-select: none;
 				border-top: 1px solid var(--line);
-				padding-top: 20px;
+				padding-top: 18px;
 			}
-			
+
 			.main-wrapper .section-header:hover .section-title {
-				color: var(--accent);
+				color: var(--muted);
 			}
-			
+
 			.main-wrapper .section-arrow {
 				font-family: 'IBM Plex Mono', monospace;
-				font-size: 14px;
+				font-size: 12px;
 				color: var(--subtle);
 				margin-top: 1px;
 			}
@@ -337,27 +333,31 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 				text-transform: uppercase;
 				font-family: 'IBM Plex Mono', monospace;
 				font-size: 12px;
-				font-weight: 700;
+				font-weight: 600;
 				color: var(--ink);
 				margin-top: 0;
 				margin-bottom: 18px;
 				padding-bottom: 0;
 				border-bottom: 0;
-				letter-spacing: 0.12em;
+				letter-spacing: 0.08em;
 			}
 
 			.main-wrapper .icon-holder {
 				color: var(--accent);
-				margin-right: 8px;
+				margin-right: 10px;
 			}
 			
 			.main-wrapper .summary p {
 				color: var(--ink);
-				line-height: 1.64;
+				line-height: 1.58;
 				margin-bottom: 0;
-				font-size: 15px;
+				font-size: 18px;
 				text-align: left;
-				max-width: 680px;
+				max-width: 660px;
+			}
+
+			.main-wrapper .summary p + p {
+				margin-top: 16px;
 			}
 			
 			.main-wrapper .summary p a {
@@ -371,8 +371,8 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.main-wrapper .experience {
-				margin-bottom: 18px;
-				padding-bottom: 18px;
+				margin-bottom: 16px;
+				padding-bottom: 16px;
 				border-bottom: 1px solid var(--line);
 			}
 			
@@ -387,8 +387,8 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			}
 			
 			.main-wrapper .experience .title {
-				font-size: 15px;
-				font-weight: 700;
+				font-size: 16px;
+				font-weight: 650;
 				margin-top: 0;
 				margin-bottom: 4px;
 				color: var(--ink);
@@ -397,7 +397,7 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			
 			.main-wrapper .experience .meta {
 				color: var(--accent);
-				font-weight: 600;
+				font-weight: 500;
 				margin-bottom: 2px;
 				font-size: 13px;
 			}
@@ -427,7 +427,7 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 			
 			.main-wrapper .experience .description {
 				color: var(--muted);
-				line-height: 1.56;
+				line-height: 1.52;
 				margin-bottom: 0;
 				font-size: 14px;
 			}
@@ -732,7 +732,8 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 						Profile
 					</h2>
 					<div class="summary">
-						<p>Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (<a href="https://mrsg.aegean.gr/" target="_blank" rel="noopener noreferrer">Marine Remote Sensing Group - MRSG</a>) and an External PhD Candidate with the <a href="https://meo-lab.com/" target="_blank" rel="noopener noreferrer">Machine Learning in Earth Observation (MEO) Lab</a> at the University of Bonn. His research develops multi-scale detection frameworks for floating marine debris, integrating multi-sensor satellite data with high-resolution UAV imagery to provide actionable insights into plastic pollution. Working at the intersection of marine remote sensing, machine learning, and image processing, he aims to bridge complex orbital observations with practical environmental management and scalable ocean conservation solutions.</p>
+						<p>Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (<a href="https://mrsg.aegean.gr/" target="_blank" rel="noopener noreferrer">MRSG</a>) and an External Ph.D. candidate with the <a href="https://meo-lab.com/" target="_blank" rel="noopener noreferrer">MEO Lab</a> at the University of Bonn.</p>
+						<p>His research aims to develop remote-sensing and machine-learning methods for detecting floating marine debris and other ocean-surface materials from satellite and UAV observations.</p>
 					</div><!--//summary-->
 				</section><!--//section-->
 				
@@ -740,9 +741,9 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 					<div class="section-header" data-section="working">
 						<h2 class="section-title">
 							<span class="icon-holder">02</span>
-							Working Experience
+							Research Appointments
 						</h2>
-						<span class="section-arrow">▼</span>
+						<span class="section-arrow">-</span>
 					</div>
 					<div id="working">
 						{cv.workingExperience.map(item => (
@@ -764,7 +765,7 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 							<span class="icon-holder">03</span>
 							Research Experience
 						</h2>
-						<span class="section-arrow">▼</span>
+						<span class="section-arrow">-</span>
 					</div>
 					<div id="research">
 						{cv.experience.map(item => (
@@ -786,7 +787,7 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 							<span class="icon-holder">04</span>
 							Teaching Experience
 						</h2>
-						<span class="section-arrow">▼</span>
+						<span class="section-arrow">-</span>
 					</div>
 					<div id="teaching">
 						{cv.teaching.map(item => (
@@ -806,9 +807,9 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 					<div class="section-header" data-section="publications">
 						<h2 class="section-title">
 							<span class="icon-holder">05</span>
-							Publications
+							Peer-Reviewed Publications
 						</h2>
-						<span class="section-arrow">▼</span>
+						<span class="section-arrow">-</span>
 					</div>
 					<div id="publications">
 						{groupedPublications.map(yearGroup => (
@@ -830,29 +831,40 @@ const groupedPublications = groupPublicationsByYear(cv.publications);
 						))}
 					</div>
 				</section><!--//section-->
+
+				<section class="section experiences-section">
+					<div class="section-header" data-section="presentations">
+						<h2 class="section-title">
+							<span class="icon-holder">06</span>
+							Conference Presentations
+						</h2>
+						<span class="section-arrow">-</span>
+					</div>
+					<div id="presentations">
+						{cv.presentations.map(item => (
+							<div class="experience">
+								<div class="item">
+									<h3 class="title">{item.title}</h3>
+									<h4 class="meta">{item.authors}</h4>
+									<div class="journal">{item.type}, {item.venue}</div>
+									<div class="time">{item.location}, {item.year}</div>
+								</div><!--//item-->
+							</div><!--//experience-->
+						))}
+					</div>
+				</section><!--//section-->
 			</div><!--//main-wrapper-->
-		</div>
-		
+			</div>
+
 		<script>
-			function toggleMainSection(sectionId) {
-				const content = document.getElementById(sectionId);
-				const header = content.previousElementSibling;
-				const arrow = header.querySelector('.section-arrow');
-
-				if (content.hidden) {
-					content.hidden = false;
-					arrow.textContent = '▼';
-					header.classList.remove('collapsed');
-				} else {
-					content.hidden = true;
-					arrow.textContent = '▶';
-					header.classList.add('collapsed');
-				}
-			}
-
 			document.querySelectorAll('.section-header[data-section]').forEach((header) => {
 				header.addEventListener('click', () => {
-					toggleMainSection(header.dataset.section);
+					const content = document.getElementById(header.dataset.section);
+					const arrow = header.querySelector('.section-arrow');
+					const isClosed = content.hidden;
+
+					content.hidden = !isClosed;
+					arrow.textContent = isClosed ? '-' : '+';
 				});
 			});
 		</script>

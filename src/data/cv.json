@@ -1,12 +1,18 @@
 {
   "name": "Youchul Jeong",
-  "title": "PhD Candidate in Marine Science",
+  "title": "Ph.D. Candidate in Marine Science",
   "email": "youchul@aegean.gr",
   "linkedin": "youchulj",
   "github": "https://github.com/youchulJ",
   "researchgate": "https://www.researchgate.net/profile/Youchul-Jeong-2",
-  "about": "Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (Marine Remote Sensing Group - MRSG) and an External PhD Candidate with the Machine Learning in Earth Observation (MEO) Lab at the University of Bonn. His research develops multi-scale detection frameworks for floating marine debris, integrating multi-sensor satellite data with high-resolution UAV imagery to provide actionable insights into plastic pollution. Working at the intersection of marine remote sensing, machine learning, and image processing, he aims to bridge complex orbital observations with practical environmental management and scalable ocean conservation solutions.",
+  "about": "Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (Marine Remote Sensing Group - MRSG) and an External Ph.D. candidate with the Machine Learning in Earth Observation (MEO) Lab at the University of Bonn. His research aims to develop remote-sensing and machine-learning methods for detecting floating marine debris and other ocean-surface materials from satellite and UAV observations.",
   "experience": [
+    {
+      "position": "Plastic Litter Project 2025 (PLP2025)",
+      "institution": "",
+      "period": "May 2025",
+      "description": "Constructed floating plastic-litter targets using HDPE tarps and wooden planks in 1 m², 2 m², and 3 m² configurations for the PLP2025 field experiment. Assisted with field deployment, monitoring, repair, and retrieval of six target units in the Gulf of Gera, Lesvos."
+    },
     {
       "position": "Drone Analysis of Beach Safety and Beachgoer Behavior",
       "institution": "",
@@ -22,11 +28,11 @@
     {
       "position": "Floating Marine Debris and Physical Ocean Phenomena in S-ORS",
       "institution": "",
-      "period": "April 2021 - Dec 2023",
+      "period": "Apr 2021 - Dec 2023",
       "description": "Applied drone technology and Applied Drone Automatic Flight Advisory in open ocean conditions. Developed a CNN model for detecting marine debris for Socheongcho Ocean Research Station."
     },
     {
-      "position": "Drone Survey of Spotted seal Population on Baekryeong Island",
+      "position": "Drone Survey of Spotted Seal Population",
       "institution": "",
       "period": "May 2022 - Nov 2023",
       "description": "Conducted drone surveys to assess spotted seal population on Baekryeong Island and gather high-resolution imagery, contributing crucial data to understanding spotted seal dynamics."
@@ -52,39 +58,33 @@
   ],
   "education": [
     {
-      "degree": "PhD in Marine Science",
-      "institution": "University of the Aegean",
-      "period": "2025 - Present"
+      "degree": "Ph.D. Candidate in Marine Science",
+      "institution": "University of the Aegean, Department of Marine Science",
+      "period": "Oct 2025 - Present"
     },
     {
-      "degree": "MSc in Oceanography",
-      "institution": "Pusan National University",
-      "period": "2024"
+      "degree": "Master of Science in Oceanography",
+      "institution": "Pusan National University, Department of Earth Environmental System",
+      "period": "Feb 2024"
     },
     {
-      "degree": "BSc in Oceanography",
-      "institution": "Pusan National University",
-      "period": "2022"
+      "degree": "Bachelor of Science in Oceanography",
+      "institution": "Pusan National University, Department of Oceanography",
+      "period": "Feb 2022"
     }
   ],
   "teaching": [
     {
-      "position": "Research Assistant",
-      "institution": "Pusan National University",
-      "period": "Fall 2022 - Spring 2024",
-      "description": "Developed innovative methodologies including drones, AI, and multi-spectral sensors to contribute to published articles on remote sensing."
-    },
-    {
-      "position": "Interpretation of marine data",
-      "institution": "Pusan National University",
-      "period": "Fall 2023",
-      "description": "[Course No. MS3200990] Led fieldwork for 40 undergraduate students to acquire Sargassum multi-spectral images. Taught data processing using MATLAB as part of the project curriculum."
+      "position": "Interpretation of Marine Data",
+      "institution": "Course No. MS3200990",
+      "period": "1st semester 2023",
+      "description": "Led fieldwork for 40 undergraduate students to acquire Sargassum multi-spectral images. Taught data processing using MATLAB as part of the project curriculum."
     },
     {
       "position": "Coastal Practices Survey",
-      "institution": "Pusan National University",
-      "period": "Spring 2022, Spring 2023",
-      "description": "[Course No. MS3200295] Delivered theoretical lectures on YOLOv5, covering installation process and algorithms."
+      "institution": "Course No. MS3200295",
+      "period": "1st semester 2022, 2023",
+      "description": "Delivered theoretical lectures on YOLOv5, covering installation process and algorithms."
     }
   ],
   "publications": [
@@ -105,14 +105,54 @@
       "link": "https://www.mdpi.com/2072-4292/16/13/2275"
     }
   ],
-  "presentations": [],
+  "presentations": [
+    {
+      "title": "A Study on Monitoring Floating Marine Macro Litter using a Multi-spectral Sensor and Classification based on Deep Learning",
+      "authors": "Youchul Jeong et al.",
+      "type": "Poster presentation",
+      "venue": "11th Asian Workshop on Ocean Color",
+      "location": "Nagoya, Japan",
+      "year": "2023"
+    },
+    {
+      "title": "A Study on Monitoring Floating Marine Macro Litter using Multi-spectral Sensor and Classification based on Deep Learning",
+      "authors": "Youchul Jeong et al.",
+      "type": "Oral presentation",
+      "venue": "Korea Ocean Research Conference",
+      "location": "Seoul, South Korea",
+      "year": "2023"
+    },
+    {
+      "title": "A Study on Monitoring Floating Marine Macro Litter using a Multi-spectral Sensor and Classification based on Deep Learning",
+      "authors": "Youchul Jeong et al.",
+      "type": "Oral presentation",
+      "venue": "Ocean & Atmosphere Science Interdisciplinary Studies Conference",
+      "location": "Busan, South Korea",
+      "year": "2023"
+    },
+    {
+      "title": "A Study on Classification and Monitoring of Floating Marine Macro Litter using Multispectral Imagery in UAV and Deep Learning",
+      "authors": "Youchul Jeong et al.",
+      "type": "Poster presentation",
+      "venue": "European Geoscience Union General Assembly",
+      "location": "Vienna, Austria",
+      "year": "2023"
+    },
+    {
+      "title": "A Study on Classification and Monitoring of Floating Marine Macro Litter using Multispectral Imagery in UAV and Deep Learning",
+      "authors": "Youchul Jeong et al.",
+      "type": "Oral presentation",
+      "venue": "10th Asian Workshop on Ocean Color",
+      "location": "Indonesia",
+      "year": "2022"
+    }
+  ],
   "skills": [
-    "MATLAB",
-    "Python",
-    "Deep Learning",
-    "Remote Sensing",
-    "Marine Litter Detection",
-    "UAV Operations"
+    "Programming",
+    "Satellite Imagery",
+    "UAV Operations",
+    "Atmospheric Correction",
+    "Remote Sensing Software"
   ],
   "languages": [
     "Korean (Native)",
@@ -122,15 +162,21 @@
   "workingExperience": [
     {
       "position": "Scientific Researcher",
-      "institution": "Department of Marine Sciences, University of the Aegean",
+      "institution": "Department of Marine Science, University of the Aegean",
       "period": "May 2025 - Oct 2025",
-      "description": "Floating Marine Debris research work using drone and satellite imagery in the Marine Remote Sensing Group (MRSG)"
+      "description": "Floating marine debris research work using drone and satellite imagery in the Marine Remote Sensing Group (MRSG)."
     },
     {
       "position": "Research Assistant",
-      "institution": "Pusan National University, Marine Research Institute",
+      "institution": "Marine Research Institute, Pusan National University",
       "period": "Mar 2024 - Apr 2025",
-      "description": "Conducting drone fieldwork and developing a deep learning model to detect marine debris in the ocean."
+      "description": "Conducted drone fieldwork and developed a deep learning model to detect marine debris in the ocean."
+    },
+    {
+      "position": "Research Assistant",
+      "institution": "Marine Research Institute, Pusan National University",
+      "period": "Sep 2022 - Dec 2022, Sep 2023 - Feb 2024",
+      "description": "Developed innovative methodologies including drones, AI, and multi-spectral sensors to contribute to published articles on remote sensing."
     }
   ]
 }
