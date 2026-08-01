@@ -5,19 +5,13 @@
   "linkedin": "youchulj",
   "github": "https://github.com/youchulJ",
   "researchgate": "https://www.researchgate.net/profile/Youchul-Jeong-2",
-  "about": "Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (Marine Remote Sensing Group - MRSG) and an External Ph.D. candidate with the Machine Learning in Earth Observation (MEO) Lab at the University of Bonn. His research aims to develop remote-sensing and machine-learning methods for detecting floating marine debris and other ocean-surface materials from satellite and UAV observations.",
+  "about": "Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (Marine Remote Sensing Group - MRSG) and an External Ph.D. candidate with the Machine Learning in Earth Observation (MEO) Lab at the University of Bonn. His research aims to develop remote-sensing and machine-learning methods for detecting floating marine debris and other sea-surface features from satellite and UAV observations.",
   "experience": [
     {
       "position": "Plastic Litter Project 2025 (PLP2025)",
       "institution": "",
       "period": "May 2025",
       "description": "Constructed floating plastic-litter targets using HDPE tarps and wooden planks in 1 m², 2 m², and 3 m² configurations for the PLP2025 field experiment. Assisted with field deployment, monitoring, repair, and retrieval of six target units in the Gulf of Gera, Lesvos."
-    },
-    {
-      "position": "Drone Analysis of Beach Safety and Beachgoer Behavior",
-      "institution": "",
-      "period": "Nov 2023, Feb - Aug 2024",
-      "description": "Orchestrated drone flights and implemented the YOLOv8 algorithm to observe beach safety. Conducted surveys of beachgoer population to understand motivations and improve beach conditions."
     },
     {
       "position": "Classification and Monitoring of Floating Marine Macro Litter (MSc Thesis)",
@@ -32,119 +26,54 @@
       "description": "Applied drone technology and Applied Drone Automatic Flight Advisory in open ocean conditions. Developed a CNN model for detecting marine debris for Socheongcho Ocean Research Station."
     },
     {
-      "position": "Drone Survey of Spotted Seal Population",
-      "institution": "",
-      "period": "May 2022 - Nov 2023",
-      "description": "Conducted drone surveys to assess spotted seal population on Baekryeong Island and gather high-resolution imagery, contributing crucial data to understanding spotted seal dynamics."
-    },
-    {
-      "position": "Floating Marine Litter, Korea Institute of Ocean Science & Technology",
-      "institution": "",
+      "position": "Floating Marine Litter Survey",
+      "institution": "Korea Institute of Ocean Science & Technology (KIOST)",
       "period": "May 2023 - Oct 2023",
       "description": "Worked with Dr. Won Joon Shim (KIOST) to conduct on-site surveys of microplastics and floating marine litter. Compared and analyzed results of drone and multispectral sensor surveys."
-    },
-    {
-      "position": "Coastal Topography and Seabed Survey",
-      "institution": "",
-      "period": "Jul 2023 - Aug 2023",
-      "description": "Conducted RTK-GPS and drone surveys to analyze coastal sand loss and seabed depth change."
-    },
-    {
-      "position": "UAV Team Leader, Korean Air Force",
-      "institution": "",
-      "period": "May 2016 - May 2018",
-      "description": "Assembled military training UAVs, managed GPS element procurement, and led team activities."
     }
   ],
   "education": [
     {
       "degree": "Ph.D. Candidate in Marine Science",
-      "institution": "University of the Aegean, Department of Marine Science",
+      "department": "Department of Marine Science",
+      "institution": "University of the Aegean",
       "period": "Oct 2025 - Present"
     },
     {
       "degree": "Master of Science in Oceanography",
-      "institution": "Pusan National University, Department of Earth Environmental System",
+      "department": "Department of Earth Environmental System",
+      "institution": "Pusan National University",
       "period": "Feb 2024"
     },
     {
       "degree": "Bachelor of Science in Oceanography",
-      "institution": "Pusan National University, Department of Oceanography",
+      "department": "Department of Oceanography",
+      "institution": "Pusan National University",
       "period": "Feb 2022"
-    }
-  ],
-  "teaching": [
-    {
-      "position": "Interpretation of Marine Data",
-      "institution": "Course No. MS3200990",
-      "period": "1st semester 2023",
-      "description": "Led fieldwork for 40 undergraduate students to acquire Sargassum multi-spectral images. Taught data processing using MATLAB as part of the project curriculum."
-    },
-    {
-      "position": "Coastal Practices Survey",
-      "institution": "Course No. MS3200295",
-      "period": "1st semester 2022, 2023",
-      "description": "Delivered theoretical lectures on YOLOv5, covering installation process and algorithms."
     }
   ],
   "publications": [
     {
       "title": "A Study on Monitoring Floating Marine Macro-Litter using a Multi-Spectral Sensor and Classification based on Deep Learning",
       "authors": "Youchul Jeong, Jisun Shin, Jong-Seok Lee, Ji-Yeon Baek, Daniel Schläpfer, Sin-Young Kim, Jin-Yong Jeong, and Young-Heon Jo",
-      "journal": "Remote Sensing",
+      "journal": "Remote Sensing, 16(23), 4347",
       "year": "2024",
       "month": "December",
-      "link": "https://www.mdpi.com/2072-4292/16/23/4347"
+      "link": "https://www.mdpi.com/2072-4292/16/23/4347",
+      "image": "/youchul-jeong-cv/images/publications/floating-marine-litter.jpg",
+      "imageAlt": "Graphical abstract showing drone survey, data processing, deep learning, and floating marine macro-litter classification",
+      "imageLabel": "Graphical abstract · Remote Sensing"
     },
     {
       "title": "Decomposition of Submesoscale Ocean Wave and Current Derived from UAV-Based Observation",
       "authors": "Sin-Young Kim, Jong-Seok Lee, Youchul Jeong, and Young-Heon Jo",
-      "journal": "Remote Sensing",
+      "journal": "Remote Sensing, 16(13), 2275",
       "year": "2024",
       "month": "May",
-      "link": "https://www.mdpi.com/2072-4292/16/13/2275"
-    }
-  ],
-  "presentations": [
-    {
-      "title": "A Study on Monitoring Floating Marine Macro Litter using a Multi-spectral Sensor and Classification based on Deep Learning",
-      "authors": "Youchul Jeong et al.",
-      "type": "Poster presentation",
-      "venue": "11th Asian Workshop on Ocean Color",
-      "location": "Nagoya, Japan",
-      "year": "2023"
-    },
-    {
-      "title": "A Study on Monitoring Floating Marine Macro Litter using Multi-spectral Sensor and Classification based on Deep Learning",
-      "authors": "Youchul Jeong et al.",
-      "type": "Oral presentation",
-      "venue": "Korea Ocean Research Conference",
-      "location": "Seoul, South Korea",
-      "year": "2023"
-    },
-    {
-      "title": "A Study on Monitoring Floating Marine Macro Litter using a Multi-spectral Sensor and Classification based on Deep Learning",
-      "authors": "Youchul Jeong et al.",
-      "type": "Oral presentation",
-      "venue": "Ocean & Atmosphere Science Interdisciplinary Studies Conference",
-      "location": "Busan, South Korea",
-      "year": "2023"
-    },
-    {
-      "title": "A Study on Classification and Monitoring of Floating Marine Macro Litter using Multispectral Imagery in UAV and Deep Learning",
-      "authors": "Youchul Jeong et al.",
-      "type": "Poster presentation",
-      "venue": "European Geoscience Union General Assembly",
-      "location": "Vienna, Austria",
-      "year": "2023"
-    },
-    {
-      "title": "A Study on Classification and Monitoring of Floating Marine Macro Litter using Multispectral Imagery in UAV and Deep Learning",
-      "authors": "Youchul Jeong et al.",
-      "type": "Oral presentation",
-      "venue": "10th Asian Workshop on Ocean Color",
-      "location": "Indonesia",
-      "year": "2022"
+      "link": "https://www.mdpi.com/2072-4292/16/13/2275",
+      "image": "/youchul-jeong-cv/images/publications/ocean-wave-current.jpg",
+      "imageAlt": "Surface current trajectory, vector, velocity, and vorticity maps derived from UAV observations",
+      "imageLabel": "Figure 8 · Remote Sensing"
     }
   ],
   "skills": [
@@ -153,11 +82,6 @@
     "UAV Operations",
     "Atmospheric Correction",
     "Remote Sensing Software"
-  ],
-  "languages": [
-    "Korean (Native)",
-    "English (Proficient)",
-    "Greek (Beginner)"
   ],
   "workingExperience": [
     {
@@ -169,14 +93,8 @@
     {
       "position": "Research Assistant",
       "institution": "Marine Research Institute, Pusan National University",
-      "period": "Mar 2024 - Apr 2025",
-      "description": "Conducted drone fieldwork and developed a deep learning model to detect marine debris in the ocean."
-    },
-    {
-      "position": "Research Assistant",
-      "institution": "Marine Research Institute, Pusan National University",
-      "period": "Sep 2022 - Dec 2022, Sep 2023 - Feb 2024",
-      "description": "Developed innovative methodologies including drones, AI, and multi-spectral sensors to contribute to published articles on remote sensing."
+      "period": "Sep - Dec 2022; Sep 2023 - Apr 2025",
+      "description": "Conducted drone fieldwork and developed machine-learning methods using multispectral imagery for marine-debris detection and remote-sensing research."
     }
   ]
 }
