@@ -1,0 +1,86 @@
+---
+import cv from '../data/cv.json';
+const { title = cv.name, description = `${cv.name} — marine remote sensing, research, and personal reflections.`, active = 'home' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+    <link rel="icon" href={`${base}favicon.svg?v=4`} type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header>
+      <a class="name" href={base}>{cv.name}</a>
+      <nav aria-label="Main navigation">
+        <a href={base} aria-current={active === 'home' ? 'page' : undefined}>Home</a>
+        <a href={`${base}journal/`} aria-current={active === 'journal' ? 'page' : undefined}>Journal</a>
+        <a href={`${base}Youchul%20Jeong%20CV.pdf`} target="_blank" rel="noopener noreferrer">CV ↗</a>
+      </nav>
+    </header>
+    <div id="main-content"><slot /></div>
+    <footer>{cv.name} · <a href={`mailto:${cv.email}`}>{cv.email}</a></footer>
+  </body>
+</html>
+<style is:global>
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #f4f4f3; color: #000; font-family: 'Adobe Garamond Pro', 'adobe-garamond-pro', 'EB Garamond', Georgia, serif; font-size: 18.608px; line-height: 1.4; -webkit-font-smoothing: antialiased; }
+  a { color: #5C4638; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: #5C4638; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #5C4638; outline-offset: 5px; }
+  header { max-width: 1440px; padding: 30px 4.2%; margin: 0 auto; display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+  .name { font-family: 'Orpheus Pro', 'orpheus-pro', 'EB Garamond', Georgia, serif; font-size: 29.36px; color: #000; text-decoration: none; line-height: 1.2; }
+  nav { display: flex; gap: 20px; }
+  nav a { color: #000; text-decoration: none; }
+  nav [aria-current="page"] { text-decoration: underline; }
+  main { width: min(760px, calc(100% - 48px)); margin: 36px auto 64px; }
+  section { scroll-margin-top: 30px; margin-bottom: 32px; }
+  h1, h2 { font-family: 'Orpheus Pro', 'orpheus-pro', 'EB Garamond', Georgia, serif; color: #6B5140; font-size: 25px; font-weight: 400; line-height: 1.3; margin: 0 0 14px; }
+  #profile { line-height: 1.6; margin-bottom: 44px; padding-bottom: 32px; border-bottom: 1px solid #e4e9e6; }
+  p { margin: 0 0 12px; }
+  .contact { margin-top: 16px; }
+  .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+  .expand-button { border: 0; background: transparent; color: #000; font: inherit; font-size: 22px; cursor: pointer; padding: 0 10px; min-width: 44px; min-height: 44px; }
+  .expand-button:hover { color: #000; }
+  .entries:not(.expanded) > .entry:nth-child(n + 3) { display: none; }
+  .entries:not(.expanded) > .entry:nth-child(2) { margin-bottom: 0; }
+  h3 { font-size: 17px; font-weight: 400; color: #000; margin: 0 0 14px; }
+  .projects-heading { margin-top: 32px; }
+  .entries { list-style: none; margin: 0; padding: 0; }
+  .entry { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 18px; margin-bottom: 16px; }
+  .entry:last-child { margin-bottom: 0; }
+  .date { font-size: 14px; line-height: 1.6; padding-top: 4px; color: #000; }
+  .entry p { margin: 3px 0 0; }
+  .entry .entry-title { margin: 0; }
+  .paper-title { text-decoration: none; }
+  .paper-title:hover { text-decoration: underline; }
+  .entry .meta { font-size: 17px; color: #000; line-height: 1.4; margin-top: 4px; }
+  .venue { font-size: 17px; color: #000; }
+  footer { width: min(760px, calc(100% - 48px)); margin: 0 auto; padding: 24px 0 32px; border-top: 1px solid #eee; font-size: 14px; color: #000; }
+  .skip-link { position: absolute; top: -80px; left: 20px; background: white; padding: 8px; }
+  .skip-link:focus { top: 12px; }
+  @media (max-width: 600px) {
+    header { padding: 24px; }
+    .name { font-family: 'Orpheus Pro', 'orpheus-pro', 'EB Garamond', Georgia, serif; font-size: 26px; }
+    nav { gap: 16px; font-size: 16px; }
+    main { margin-top: 32px; }
+    body { font-size: 18px; }
+    h1, h2 { font-size: 24px; }
+    .entry { grid-template-columns: 1fr; gap: 5px; margin-bottom: 18px; }
+    .date { padding-top: 0; font-size: 13px; }
+    section { margin-bottom: 30px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  @media (max-width: 420px) { header { padding: 20px; gap: 12px; flex-wrap: wrap; } nav { gap: 16px; } .name { font-size: 26px; } }
+</style>

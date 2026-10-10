@@ -1,0 +1,66 @@
+---
+import JournalPhoto from './JournalPhoto.astro';
+const { photos, protectedPhotos = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<div class="photo-journal" data-photo-journal>
+  <div class="photo-track" tabindex="0" role="region" aria-label="PLP2026 photo journal. Swipe or use the arrow buttons to browse.">
+    {photos.map(photo => <div class="photo-slide"><JournalPhoto src={`${base}${photo.src}`} alt={photo.alt} caption={photo.caption} protectedPhoto={protectedPhotos} /></div>)}
+  </div>
+  <div class="photo-controls">
+    <button type="button" data-prev aria-label="Previous photo">←</button>
+    <div class="photo-dots" aria-label="Choose a photo">
+      {photos.map((_, i) => <button type="button" data-slide={i} aria-label={`Photo ${i + 1}`} aria-pressed={i === 0 ? 'true' : 'false'}><span></span></button>)}
+    </div>
+    <span class="photo-count" aria-live="polite">1 / {photos.length}</span>
+    <button type="button" data-next aria-label="Next photo">→</button>
+  </div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-photo-journal]').forEach(gallery => {
+    const track = gallery.querySelector<HTMLElement>('.photo-track')!;
+    const slides = [...gallery.querySelectorAll<HTMLElement>('.photo-slide')];
+    const dots = [...gallery.querySelectorAll<HTMLButtonElement>('[data-slide]')];
+    const previous = gallery.querySelector<HTMLButtonElement>('[data-prev]')!;
+    const next = gallery.querySelector<HTMLButtonElement>('[data-next]')!;
+    let current = 0;
+    const update = () => {
+      current = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / track.clientWidth)));
+      dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === current)));
+      gallery.querySelector('.photo-count')!.textContent = `${current + 1} / ${slides.length}`;
+      previous.disabled = current === 0;
+      next.disabled = current === slides.length - 1;
+    };
+    const go = (i: number) => track.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, i)) * track.clientWidth, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    previous.addEventListener('click', () => go(current - 1));
+    next.addEventListener('click', () => go(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => go(i)));
+    track.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault(); go(current + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+    track.addEventListener('scroll', update, { passive: true });
+    new ResizeObserver(() => { track.scrollLeft = current * track.clientWidth; }).observe(track);
+    update();
+  });
+</script>
+<style>
+  .photo-journal { margin: 26px auto 36px; max-width: 600px; }
+  .photo-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .photo-track::-webkit-scrollbar { display: none; }
+  .photo-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+  .photo-slide :global(.journal-photo) { margin: 0; }
+  .photo-slide :global(img) { height: 420px; object-fit: contain; }
+  .photo-slide :global(figcaption) { font-size: 17px; line-height: 1.4; text-align: center; margin: 16px 12px 0; min-height: 48px; }
+  .photo-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 10px; }
+  button { background: transparent; border: 0; padding: 8px; min-width: 36px; min-height: 36px; cursor: pointer; color: #355951; font: inherit; }
+  button:disabled { opacity: .25; cursor: default; }
+  .photo-dots { display: flex; gap: 0; }
+  .photo-dots button { min-width: 24px; padding: 8px; }
+  .photo-dots span { display: block; width: 6px; height: 6px; border-radius: 50%; background: #c2cbc7; }
+  .photo-dots [aria-pressed="true"] span { background: #355951; }
+  .photo-count { font-size: 14px; color: #555; }
+  @media (max-width: 600px) { .photo-slide :global(img) { height: 320px; } }
+  @media (max-width: 380px) { .photo-slide :global(img) { height: 260px; } }
+</style>

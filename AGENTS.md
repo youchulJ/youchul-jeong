@@ -16,7 +16,7 @@ When the user provides an updated Word CV and PDF export:
 
 6. Keep the DOCX only as a private local reference in `private/Youchul Jeong CV.docx`; do not commit private DOCX files.
 7. Run `npm run build` before committing.
-8. Start a local preview with `npm run dev -- --host 127.0.0.1` and open the printed `/youchul-jeong-cv/` URL in Firefox for review.
+8. Start a local preview with `npm run dev -- --host 127.0.0.1` and open the printed `/youchul-jeong/` URL in Firefox for review.
 9. Commit the website data, template, and public PDF changes after the user approves the preview.
 
 ## Design Preferences

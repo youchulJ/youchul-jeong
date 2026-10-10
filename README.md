@@ -18,7 +18,7 @@ npm run build
 The site is configured for the GitHub Pages project path:
 
 ```js
-base: '/youchul-jeong-cv/'
+base: '/youchul-jeong/'
 ```
 
 ## Content
@@ -62,3 +62,17 @@ npm run build
 7. Commit and push.
 
 The DOCX reference is stored under `private/`, which is ignored by Git.
+
+## Journal
+
+The Journal tab is at `/youchul-jeong/journal/`. Entries are Markdown files in
+`src/content/journal/`, listed newest first. Copy `first-entry.md`, choose a new
+filename (used as the URL), and fill in `title`, `date` (`YYYY-MM-DD`), optional
+`location`, and `excerpt`. Set `draft: false` when the entry is ready to appear.
+Drafts are excluded from both the journal list and generated entry pages.
+
+Put photographs in `public/images/journal/`. Set `cover` to
+`images/journal/photo.jpg` and provide `coverAlt`, or insert photographs between
+paragraphs with `![Photo description](/youchul-jeong/images/journal/photo.jpg)`.
+For captions, use a `<figure>` with an `<img>` and `<figcaption>` in the Markdown.
+Build and deploy after editing to update the public journal.

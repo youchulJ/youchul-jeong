@@ -1,964 +1,111 @@
 ---
 import cv from '../data/cv.json';
-
-function groupPublicationsByYear(publications) {
-  const grouped = {};
-  publications.forEach(pub => {
-    if (!grouped[pub.year]) {
-      grouped[pub.year] = [];
-    }
-    grouped[pub.year].push(pub);
-  });
-  // 연도별로 정렬 (최신 연도 먼저)
-  return Object.keys(grouped).sort((a, b) => b - a).map(year => ({
-    year,
-    publications: grouped[year].sort((a, b) => {
-      // 월별로 정렬 (December > May)
-      const months = ['January', 'February', 'March', 'April', 'May', 'June', 
-                      'July', 'August', 'September', 'October', 'November', 'December'];
-      return months.indexOf(b.month) - months.indexOf(a.month);
-    })
-  }));
+import SiteLayout from '../layouts/SiteLayout.astro';
+const base = import.meta.env.BASE_URL;
+const researchLinks: Record<string, string> = {
+  'ReSe Application LLC': 'https://www.rese-apps.com/',
+  'Won Joon Shim': 'https://scholar.google.com/citations?user=ca9JdS4AAAAJ&hl=en',
+  'Daniel Schläpfer': 'https://scholar.google.com/citations?user=Bw2ZWS8AAAAJ&hl=en&oi=ao',
+};
+function descriptionParts(description: string) {
+  return description.split(/(ReSe Application LLC|Won Joon Shim|Daniel Schläpfer)/g);
 }
-
-const groupedPublications = groupPublicationsByYear(cv.publications);
-
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const papers = [...cv.publications].sort((a, b) => Number(b.year) - Number(a.year) || months.indexOf(b.month) - months.indexOf(a.month));
 ---
+<SiteLayout active="home">
+    <main>
+      <section id="profile" aria-labelledby="profile-heading">
+        <h1 id="profile-heading">Profile</h1>
+        <p>Youchul Jeong is a Ph.D. candidate in Marine Science at the University of the Aegean and a member of the <a href="https://mrsg.aegean.gr/" target="_blank" rel="noopener noreferrer">Marine Remote Sensing Group (MRSG)</a>. He is also an External Ph.D. candidate with the <a href="https://meo-lab.com/" target="_blank" rel="noopener noreferrer">Machine Learning in Earth Observation (MEO) Lab</a> at the University of Bonn.</p>
+        <p>His research focuses on detecting floating marine debris using satellite and UAV imagery, remote sensing, and machine learning.</p>
+        <div class="contact" aria-label="Contact and professional profiles">
+          <a href={`https://www.linkedin.com/in/${cv.linkedin}`} target="_blank" rel="noopener noreferrer">LinkedIn</a><span aria-hidden="true"> / </span>
+          <a href={cv.github} target="_blank" rel="noopener noreferrer">GitHub</a><span aria-hidden="true"> / </span>
+          <a href={cv.scholar} target="_blank" rel="noopener noreferrer">Google Scholar</a><span aria-hidden="true"> / </span>
+          <a href={`mailto:${cv.email}`}>Email</a>
+        </div>
+      </section>
+      <section id="papers" aria-labelledby="papers-heading">
+        <div class="section-heading">
+          <h2 id="papers-heading">Papers</h2>
+          {papers.length > 2 && <button class="expand-button" type="button" aria-expanded="false" aria-controls="papers-entries" aria-label="Show all papers"><span aria-hidden="true">+</span></button>}
+        </div>
+          <ul class="entries" id="papers-entries">
+            {papers.map(paper => (
+              <li class="entry">
+                <div class="date">{paper.year} {paper.month.slice(0, 3)}</div>
+                <div>
+                  <a class="paper-title" href={paper.link} target="_blank" rel="noopener noreferrer">{paper.title}</a>
+                  <p class="meta">{paper.authors}</p>
+                  <p class="venue"><em>{paper.journal}</em></p>
+                </div>
+              </li>
+            ))}
+          </ul>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{cv.name} - CV</title>
-		<style>
-			@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700;800&display=swap');
-			
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-			
-			:root {
-				--paper: #e4e9e6;
-				--surface: #f2f3ef;
-				--surface-soft: #ecefeb;
-				--ink: #1b1e1c;
-				--muted: #5b625e;
-				--subtle: #858c88;
-				--line: #dce1de;
-				--line-strong: #252a27;
-				--accent: #24423e;
-				--accent-soft: #eef2ef;
-				--code: #eff2ef;
-				--shadow: 0 18px 54px rgba(36, 50, 44, 0.07);
-			}
+      </section>
+      <section id="teaching" aria-labelledby="teaching-heading">
+        <div class="section-heading">
+          <h2 id="teaching-heading">Teaching</h2>
+          {cv.teaching.length > 2 && <button class="expand-button" type="button" aria-expanded="false" aria-controls="teaching-entries" aria-label="Show all teaching"><span aria-hidden="true">+</span></button>}
+        </div>
+          <ul class="entries" id="teaching-entries">
+            {cv.teaching.map(item => (
+              <li class="entry">
+                <div class="date">{item.date}</div>
+                <div><p class="entry-title">{item.title}</p><p class="venue">{item.institution} · {item.course}</p><p class="meta">{item.description}</p></div>
+              </li>
+            ))}
+          </ul>
 
-			body {
-				background: var(--paper);
-				color: var(--ink);
-				font-family: 'Source Sans 3', sans-serif;
-				font-size: 15px;
-				line-height: 1.62;
-				overflow-x: hidden;
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-			}
+      </section>
+      <section id="research" aria-labelledby="research-heading">
+        <div class="section-heading">
+          <h2 id="research-heading">Research Experience</h2>
+          {cv.experience.length > 2 && <button class="expand-button" type="button" aria-expanded="false" aria-controls="research-entries" aria-label="Show all research experience"><span aria-hidden="true">+</span></button>}
+        </div>
+          <ul class="entries" id="research-entries">
+            {cv.experience.map(item => (
+              <li class="entry">
+                <div class="date">{item.period}</div>
+                <div>
+                  <p class="entry-title">{'link' in item ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.position}</a> : item.position}</p>
+                  {item.institution && <p>{item.institution}</p>}
+                  <p class="meta">{descriptionParts(item.description).map(part => researchLinks[part] ? <a href={researchLinks[part]} target="_blank" rel="noopener noreferrer">{part}</a> : part)}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
 
-			.background-system {
-				position: fixed;
-				inset: 0;
-				z-index: 0;
-				pointer-events: none;
-				overflow: hidden;
-				background: var(--paper);
-			}
+      </section>
+      <section id="talks" aria-labelledby="talks-heading">
+        <div class="section-heading">
+          <h2 id="talks-heading">Conference Presentations</h2>
+          {cv.presentations.length > 2 && <button class="expand-button" type="button" aria-expanded="false" aria-controls="talks-entries" aria-label="Show all conference presentations"><span aria-hidden="true">+</span></button>}
+        </div>
+          <ul class="entries" id="talks-entries">
+            {cv.presentations.map(item => (
+              <li class="entry">
+                <div class="date">{item.year}</div>
+                <div><p class="entry-title">{item.event}</p><p class="venue">{item.type} · {item.location}</p><p class="meta">{item.title}</p></div>
+              </li>
+            ))}
+          </ul>
 
-			.background-system svg {
-				display: block;
-				width: 100%;
-				height: 100%;
-			}
-
-			.background-system .orbit-path {
-				fill: none;
-				stroke: #789d98;
-				stroke-width: 0.9;
-				stroke-linecap: round;
-				stroke-dasharray: 6 14;
-				opacity: 0.34;
-			}
-
-			.background-system .coordinate-label {
-				fill: #8a9a95;
-				font-family: 'IBM Plex Mono', monospace;
-				font-size: 9px;
-				letter-spacing: 0.08em;
-			}
-			
-			h1, h2, h3, h4, h5, h6 {
-				font-weight: 700;
-			}
-			
-			a {
-				color: var(--accent);
-				text-decoration: none;
-			}
-			
-			a:hover {
-				color: var(--ink);
-				text-decoration: underline;
-				text-decoration-thickness: 1px;
-				text-underline-offset: 4px;
-			}
-			
-			p {
-				line-height: 1.62;
-			}
-			
-			.wrapper {
-				background: var(--surface);
-				max-width: 1008px;
-				margin: 0 auto;
-				position: relative;
-				z-index: 1;
-				box-shadow: var(--shadow);
-				min-height: 100vh;
-				display: grid;
-				grid-template-columns: minmax(0, 1fr) 288px;
-				border: 0;
-			}
-			
-			.sidebar-wrapper {
-				position: static;
-				grid-column: 2;
-				grid-row: 1;
-				width: 288px;
-				height: 100%;
-				background: var(--surface-soft);
-				color: var(--ink);
-				border-left: 1px solid var(--line);
-			}
-			.sidebar-wrapper a {
-				color: var(--ink);
-			}
-			
-			.sidebar-wrapper .profile-container {
-				padding: 42px 32px 26px;
-				background: var(--surface-soft);
-				color: var(--ink);
-				border-bottom: 1px solid var(--line);
-				text-align: left;
-			}
-			
-			.sidebar-wrapper .name {
-				font-size: 32px;
-				font-weight: 700;
-				line-height: 1.05;
-				margin-top: 0;
-				margin-bottom: 10px;
-				letter-spacing: 0;
-			}
-			
-			.sidebar-wrapper .tagline {
-				color: var(--muted);
-				font-family: 'IBM Plex Mono', monospace;
-				font-size: 11px;
-				font-weight: 500;
-				line-height: 1.6;
-				margin-top: 0;
-				margin-bottom: 0;
-			}
-			
-			.sidebar-wrapper .container-block-title {
-				text-transform: uppercase;
-				font-family: 'IBM Plex Mono', monospace;
-				font-size: 11px;
-				font-weight: 600;
-				margin-top: 0;
-				margin-bottom: 14px;
-				color: var(--ink);
-				letter-spacing: 0.08em;
-			}
-			
-			.sidebar-wrapper .container-block {
-				padding: 24px 32px;
-				border-bottom: 1px solid var(--line);
-			}
-			
-			.sidebar-wrapper .item {
-				margin-bottom: 12px;
-			}
-			
-			.sidebar-wrapper .item:last-child {
-				margin-bottom: 0;
-			}
-			
-			.sidebar-wrapper .degree {
-				font-size: 13.5px;
-				font-weight: 700;
-				margin-bottom: 3px;
-				line-height: 1.4;
-			}
-			
-			.sidebar-wrapper .meta {
-				color: var(--muted);
-				margin-bottom: 5px;
-				font-size: 12.5px;
-				line-height: 1.48;
-			}
-
-			.sidebar-wrapper .meta .department,
-			.sidebar-wrapper .meta .institution {
-				display: block;
-			}
-
-			.sidebar-wrapper .meta .department {
-				font-weight: 600;
-			}
-
-			.sidebar-wrapper .meta .institution {
-				font-weight: 500;
-			}
-			
-			.sidebar-wrapper .time {
-				color: var(--subtle);
-				font-family: 'IBM Plex Mono', monospace;
-				font-size: 11px;
-				margin-bottom: 0;
-			}
-			
-			.sidebar-wrapper .skills-list {
-				list-style: none;
-				padding: 0;
-			}
-			
-			.sidebar-wrapper .skills-list li {
-				display: block;
-				margin: 0 0 7px 0;
-				padding: 0;
-				border: 0;
-				background: transparent;
-				border-radius: 0;
-				font-size: 12.5px;
-				line-height: 1.5;
-				font-family: 'IBM Plex Mono', monospace;
-			}
-			
-			.sidebar-wrapper .skills-list li:last-child {
-				margin-bottom: 0;
-			}
-			
-			.sidebar-wrapper .languages-list {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-			}
-			
-			.sidebar-wrapper .languages-list li {
-				margin-bottom: 10px;
-				font-size: 12.5px;
-				color: var(--ink);
-				display: grid;
-				grid-template-columns: minmax(0, 1fr) auto;
-				align-items: center;
-				column-gap: 18px;
-				line-height: 1.45;
-			}
-			
-			.sidebar-wrapper .languages-list li:last-child {
-				margin-bottom: 0;
-			}
-			
-			.sidebar-wrapper .languages-list .language-name {
-				font-weight: 500;
-			}
-			
-			.sidebar-wrapper .languages-list .language-level {
-				color: var(--accent);
-				font-family: 'IBM Plex Mono', monospace;
-				font-weight: 600;
-				text-align: right;
-			}
-			
-			.sidebar-wrapper .contact-list {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-			}
-			
-			.sidebar-wrapper .contact-list li {
-				margin-bottom: 10px;
-				display: flex;
-				align-items: center;
-				flex-wrap: nowrap;
-				gap: 10px;
-				padding: 0;
-				background: transparent;
-				border: 0;
-				border-radius: 0;
-			}
-			
-			.sidebar-wrapper .contact-list li:last-child {
-				margin-bottom: 0;
-			}
-			
-			.sidebar-wrapper .contact-list .icon {
-				flex-shrink: 0;
-				font-size: 11px;
-				width: 38px;
-				text-align: left;
-				line-height: 1;
-				display: flex;
-				align-items: center;
-				justify-content: flex-start;
-				font-family: 'IBM Plex Mono', monospace;
-				color: var(--subtle);
-				font-weight: 500;
-			}
-			
-			.sidebar-wrapper .contact-list .text {
-				flex: 1;
-				min-width: 0;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				font-size: 12.5px;
-				font-family: 'IBM Plex Mono', monospace;
-				line-height: 1.4;
-			}
-			
-			.sidebar-wrapper .contact-list a {
-				color: var(--ink);
-				text-decoration: none;
-				font-size: 12.5px;
-				font-family: 'IBM Plex Mono', monospace;
-				line-height: 1.4;
-			}
-			
-			.sidebar-wrapper .contact-list a:hover {
-				color: var(--accent);
-				text-decoration: none;
-			}
-			
-			.main-wrapper {
-				background: var(--surface);
-				padding: 42px 48px 56px 36px;
-				margin-right: 0;
-				grid-column: 1;
-				grid-row: 1;
-				min-height: 100vh;
-			}
-
-			.main-wrapper .section {
-				margin-bottom: 34px;
-			}
-			
-			.main-wrapper .section:last-child {
-				margin-bottom: 0;
-			}
-			
-			.main-wrapper .section-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: flex-start;
-				cursor: pointer;
-				user-select: none;
-				border-top: 1px solid var(--line);
-				padding-top: 18px;
-			}
-
-			.main-wrapper .section-header:hover .section-title {
-				color: var(--muted);
-			}
-
-			.main-wrapper .section-arrow {
-				font-family: 'IBM Plex Mono', monospace;
-				font-size: 12px;
-				color: var(--subtle);
-				margin-top: 1px;
-			}
-			
-			.main-wrapper .section-title {
-				text-transform: uppercase;
-				font-family: 'IBM Plex Mono', monospace;
-				font-size: 12px;
-				font-weight: 600;
-				color: var(--ink);
-				margin-top: 0;
-				margin-bottom: 18px;
-				padding-bottom: 0;
-				border-bottom: 0;
-				letter-spacing: 0.08em;
-			}
-
-			.main-wrapper .icon-holder {
-				color: var(--accent);
-				margin-right: 10px;
-			}
-			
-			.main-wrapper .summary p {
-				color: var(--ink);
-				line-height: 1.58;
-				margin-bottom: 0;
-				font-size: 17px;
-				text-align: left;
-				max-width: 660px;
-			}
-
-			.main-wrapper .summary p + p {
-				margin-top: 16px;
-			}
-			
-			.main-wrapper .summary p a {
-				color: var(--accent);
-				text-decoration: none;
-			}
-			
-			.main-wrapper .summary p a:hover {
-				color: var(--ink);
-				text-decoration: underline;
-			}
-			
-			.main-wrapper .experience {
-				margin-bottom: 16px;
-				padding-bottom: 16px;
-				border-bottom: 1px solid var(--line);
-			}
-			
-			.main-wrapper .experience:last-child {
-				border-bottom: none;
-				margin-bottom: 0;
-				padding-bottom: 0;
-			}
-			
-			.main-wrapper .experience .item {
-				margin-bottom: 0;
-			}
-			
-			.main-wrapper .experience .title {
-				font-size: 16px;
-				font-weight: 650;
-				margin-top: 0;
-				margin-bottom: 4px;
-				color: var(--ink);
-				line-height: 1.35;
-			}
-			
-			.main-wrapper .experience .meta {
-				color: var(--accent);
-				font-weight: 500;
-				margin-bottom: 2px;
-				font-size: 13.5px;
-			}
-			
-			.main-wrapper .experience .meta .university {
-				color: #4299E1;
-				font-size: 13px;
-			}
-			
-			.main-wrapper .experience .meta .department {
-				color: #E2E8F0;
-				font-size: 13px;
-			}
-			
-			.main-wrapper .experience .journal {
-				color: var(--muted);
-				font-size: 13.5px;
-				margin-bottom: 2px;
-			}
-			
-			.main-wrapper .experience .time {
-				color: var(--subtle);
-				font-family: 'IBM Plex Mono', monospace;
-				margin-bottom: 8px;
-				font-size: 12.5px;
-			}
-			
-			.main-wrapper .experience .description {
-				color: var(--muted);
-				line-height: 1.62;
-				margin-bottom: 0;
-				font-size: 14.5px;
-			}
-			
-			.main-wrapper .experience .title a {
-				color: var(--ink);
-				text-decoration: none;
-			}
-			
-			.main-wrapper .experience .title a:hover {
-				color: var(--accent);
-				text-decoration: none;
-			}
-			
-			.main-wrapper .year-group {
-				margin-bottom: 20px;
-			}
-			
-			.main-wrapper .year-group:last-child {
-				margin-bottom: 0;
-			}
-			
-			.main-wrapper .year-title {
-				font-size: 15px;
-				font-weight: 700;
-				color: var(--accent);
-				margin-bottom: 12px;
-				padding-bottom: 4px;
-				border-bottom: 1px solid var(--line);
-				text-transform: uppercase;
-				font-family: 'IBM Plex Mono', monospace;
-				letter-spacing: 0;
-			}
-
-			.main-wrapper .publication {
-				display: grid;
-				grid-template-columns: 180px minmax(0, 1fr);
-				gap: 18px;
-				align-items: start;
-			}
-
-			.main-wrapper .publication-media {
-				display: block;
-				border: 1px solid var(--line);
-				background: #ffffff;
-				color: var(--muted);
-			}
-
-			.main-wrapper .publication-media:hover {
-				border-color: #b8c3be;
-				text-decoration: none;
-			}
-
-			.main-wrapper .publication-media img {
-				display: block;
-				width: 100%;
-				height: 116px;
-				object-fit: contain;
-				background: #ffffff;
-			}
-
-			.main-wrapper .publication-media figcaption {
-				padding: 5px 7px;
-				border-top: 1px solid var(--line);
-				font-family: 'IBM Plex Mono', monospace;
-				font-size: 9px;
-				line-height: 1.35;
-				color: var(--subtle);
-				background: var(--surface-soft);
-			}
-
-			.main-wrapper .teaching {
-				margin-bottom: 18px;
-				padding-bottom: 18px;
-				border-bottom: 1px solid var(--line);
-			}
-			
-			.main-wrapper .teaching:last-child {
-				border-bottom: none;
-				margin-bottom: 0;
-				padding-bottom: 0;
-			}
-			
-			.main-wrapper .teaching .item {
-				margin-bottom: 0;
-			}
-			
-			.main-wrapper .teaching .title {
-				font-size: 15px;
-				font-weight: 600;
-				margin-top: 0;
-				margin-bottom: 4px;
-				color: var(--ink);
-				line-height: 1.35;
-			}
-			
-			.main-wrapper .teaching .meta {
-				color: var(--accent);
-				font-weight: 600;
-				margin-bottom: 2px;
-				font-size: 13.5px;
-			}
-			
-			.main-wrapper .teaching .time {
-				color: var(--subtle);
-				font-family: 'IBM Plex Mono', monospace;
-				margin-bottom: 8px;
-				font-size: 12.5px;
-			}
-			
-			.main-wrapper .teaching .description {
-				color: var(--muted);
-				line-height: 1.62;
-				margin-bottom: 0;
-				font-size: 14.5px;
-			}
-			
-			.main-wrapper .projects-section {
-				margin-bottom: 25px;
-			}
-			
-			.main-wrapper .projects-section:last-child {
-				margin-bottom: 0;
-			}
-			
-			.main-wrapper .projects .item {
-				margin-bottom: 15px;
-				padding-bottom: 15px;
-				border-bottom: 1px solid var(--line);
-			}
-			
-			.main-wrapper .projects .item:last-child {
-				border-bottom: none;
-				margin-bottom: 0;
-				padding-bottom: 0;
-			}
-			
-			.main-wrapper .projects .title {
-				font-size: 15px;
-				font-weight: 700;
-				margin-top: 0;
-				margin-bottom: 3px;
-				line-height: 1.4;
-				color: var(--ink);
-			}
-			
-			.main-wrapper .projects .title a {
-				color: var(--ink);
-				text-decoration: none;
-			}
-			
-			.main-wrapper .projects .title a:hover {
-				color: var(--accent);
-				text-decoration: none;
-			}
-			
-			.main-wrapper .projects .description {
-				color: var(--muted);
-				margin-bottom: 2px;
-				line-height: 1.4;
-				font-size: 12px;
-			}
-			
-			.main-wrapper .projects .description:last-child {
-				margin-bottom: 0;
-			}
-			
-			.main-wrapper .skill-item {
-				margin-bottom: 20px;
-			}
-			
-			.main-wrapper .skill-item .title {
-				font-size: 14px;
-				font-weight: 700;
-				color: var(--ink);
-				margin-bottom: 10px;
-			}
-			
-			.main-wrapper .skill-item .keywords {
-				color: var(--ink);
-			}
-			
-			.main-wrapper .languages-list {
-				margin-bottom: 0;
-			}
-			
-			.main-wrapper .languages-list li {
-				margin-bottom: 10px;
-			}
-			
-			.main-wrapper .languages-list li:last-child {
-				margin-bottom: 0;
-			}
-			
-			@media (max-width: 991px) {
-				.background-system {
-					display: none;
-				}
-
-				.wrapper {
-					background: var(--surface);
-					display: flex;
-					flex-direction: column;
-					margin: 0;
-					border-left: 0;
-					border-right: 0;
-				}
-				
-				.sidebar-wrapper {
-					position: static;
-					width: 100%;
-					min-height: 0;
-					order: 3;
-				}
-				
-				.main-wrapper {
-					margin-right: 0;
-					padding: 34px 28px;
-					order: 1;
-					min-height: 0;
-				}
-
-			}
-			
-			@media (max-width: 767px) {
-				.wrapper {
-					flex-direction: column;
-				}
-				
-				.main-wrapper {
-					padding: 28px 20px;
-					order: 1;
-				}
-
-				.main-wrapper .summary p {
-					font-size: 15px;
-				}
-				
-				.main-wrapper .summary p {
-					text-align: left;
-					text-justify: none;
-					line-height: 1.6;
-					word-spacing: normal;
-				}
-				
-				.main-wrapper .experience .item p,
-				.main-wrapper .experience .item .description {
-					text-align: left;
-					text-justify: none;
-					line-height: 1.6;
-				}
-
-				.main-wrapper .publication {
-					grid-template-columns: 1fr;
-					gap: 14px;
-				}
-
-				.main-wrapper .publication-media {
-					max-width: 260px;
-				}
-				
-				.sidebar-wrapper {
-					order: 3;
-				}
-
-				.sidebar-wrapper .profile-container {
-					padding: 28px 20px;
-				}
-				
-				.sidebar-wrapper .container-block {
-					padding: 20px;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<div class="background-system" aria-hidden="true">
-			<svg viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice">
-				<g class="orbit-track">
-					<path class="orbit-path" d="M-120 930 C210 596 460 404 730 315 C976 233 1210 223 1560 37" />
-				</g>
-				<text class="coordinate-label" x="34" y="54">39.10° N</text>
-				<text class="coordinate-label" x="1342" y="950">26.30° E</text>
-			</svg>
-		</div>
-		<div class="wrapper">
-			<div class="sidebar-wrapper">
-				<div class="profile-container">
-					<h1 class="name">{cv.name}</h1>
-					<h2 class="tagline">{cv.title}</h2>
-				</div><!--//profile-container-->
-				
-				<div class="contact-container container-block">
-					<ul class="contact-list">
-						{cv.email && (
-							<li class="contact-item">
-								<span class="icon">mail</span>
-								<a href={`mailto:${cv.email}`} class="text">{cv.email}</a>
-							</li>
-						)}
-						{cv.linkedin && (
-							<li class="contact-item">
-								<span class="icon">in</span>
-								<a href={`https://www.linkedin.com/in/${cv.linkedin}`} target="_blank" rel="noopener noreferrer" class="text">LinkedIn</a>
-							</li>
-						)}
-						{cv.github && (
-							<li class="contact-item">
-								<span class="icon">git</span>
-								<a href={cv.github} target="_blank" rel="noopener noreferrer" class="text">GitHub</a>
-							</li>
-						)}
-						{cv.researchgate && (
-							<li class="contact-item">
-								<span class="icon">pub</span>
-								<a href={cv.researchgate} target="_blank" rel="noopener noreferrer" class="text">ResearchGate</a>
-							</li>
-						)}
-						<li class="contact-item">
-							<span class="icon">cv</span>
-							<a href="/youchul-jeong-cv/Youchul%20Jeong%20CV.pdf" target="_blank" rel="noopener noreferrer" class="text">Download CV</a>
-						</li>
-					</ul>
-				</div><!--//contact-container-->
-				
-				<div class="education-container container-block">
-					<h2 class="container-block-title">Education</h2>
-					{cv.education.map(item => (
-						<div class="item">
-							<h4 class="degree">{item.degree}</h4>
-							<div class="meta">
-								<span class="department">{item.department}</span>
-								<span class="institution">{item.institution}</span>
-							</div>
-							<div class="time">{item.period}</div>
-						</div>
-					))}
-				</div><!--//education-container-->
-				
-				<div class="skills-container container-block">
-					<h2 class="container-block-title">Technical Skills</h2>
-					<ul class="skills-list">
-						{cv.skills.map(skill => (
-							<li>{skill}</li>
-						))}
-					</ul>
-				</div>
-				
-			</div><!--//sidebar-wrapper-->
-			
-			<div class="main-wrapper">
-				<section class="section summary-section">
-					<h2 class="section-title">
-						<span class="icon-holder">01</span>
-						Profile
-					</h2>
-					<div class="summary">
-						<p>Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (<a href="https://mrsg.aegean.gr/" target="_blank" rel="noopener noreferrer">MRSG</a>) and an External Ph.D. candidate with the <a href="https://meo-lab.com/" target="_blank" rel="noopener noreferrer">MEO Lab</a> at the University of Bonn.</p>
-						<p>His research aims to develop remote-sensing and machine-learning methods for detecting floating marine debris and other sea-surface features from satellite and UAV observations.</p>
-					</div><!--//summary-->
-				</section><!--//section-->
-				
-				<section class="section experiences-section">
-					<div class="section-header" data-section="working">
-						<h2 class="section-title">
-							<span class="icon-holder">02</span>
-							Research Appointments
-						</h2>
-						<span class="section-arrow">-</span>
-					</div>
-					<div id="working">
-						{cv.workingExperience.map(item => (
-							<div class="experience">
-								<div class="item">
-									<h3 class="title">{item.position}</h3>
-									<h4 class="meta">{item.institution}</h4>
-									<div class="time">{item.period}</div>
-									<p class="description">{item.description}</p>
-								</div><!--//item-->
-							</div><!--//experience-->
-						))}
-					</div>
-				</section><!--//section-->
-
-				<section class="section experiences-section">
-					<div class="section-header" data-section="research">
-						<h2 class="section-title">
-							<span class="icon-holder">03</span>
-							Selected Research Experience
-						</h2>
-						<span class="section-arrow">-</span>
-					</div>
-					<div id="research">
-						{cv.experience.map(item => (
-							<div class="experience">
-								<div class="item">
-									<h3 class="title">{item.position}</h3>
-									<h4 class="meta">{item.institution}</h4>
-									<div class="time">{item.period}</div>
-									<p class="description">{item.description}</p>
-								</div><!--//item-->
-							</div><!--//experience-->
-						))}
-					</div>
-				</section><!--//section-->
-
-				<section class="section experiences-section">
-					<div class="section-header" data-section="publications">
-						<h2 class="section-title">
-							<span class="icon-holder">04</span>
-							Peer-Reviewed Publications
-						</h2>
-						<span class="section-arrow">-</span>
-					</div>
-					<div id="publications">
-						{groupedPublications.map(yearGroup => (
-							<div class="year-group">
-								<h3 class="year-title">{yearGroup.year}</h3>
-								{yearGroup.publications.map(pub => (
-									<div class="experience publication">
-										<a class="publication-media" href={pub.link} target="_blank" rel="noopener noreferrer">
-											<figure>
-												<img src={pub.image} alt={pub.imageAlt} loading="lazy" />
-												<figcaption>{pub.imageLabel}</figcaption>
-											</figure>
-										</a>
-										<div class="item">
-											<h3 class="title">
-												<a href={pub.link} target="_blank" rel="noopener noreferrer">{pub.title}</a>
-											</h3>
-											<h4 class="meta">{pub.authors}</h4>
-											<div class="journal">{pub.journal}</div>
-											<div class="time">{pub.month} {pub.year}</div>
-										</div><!--//item-->
-									</div><!--//experience-->
-								))}
-							</div><!--//year-group-->
-						))}
-					</div>
-				</section><!--//section-->
-			</div><!--//main-wrapper-->
-			</div>
-
-		<script>
-			import { gsap } from 'gsap';
-
-			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-			if (!reduceMotion && window.innerWidth > 991) {
-				const backgroundMotion = gsap.context(() => {
-					gsap.to('.orbit-track', {
-						x: 12,
-						y: -8,
-						duration: 32,
-						repeat: -1,
-						yoyo: true,
-						ease: 'sine.inOut'
-					});
-
-					gsap.to('.orbit-path', {
-						strokeDashoffset: -120,
-						duration: 40,
-						repeat: -1,
-						ease: 'none'
-					});
-				}, document.querySelector('.background-system'));
-
-				window.addEventListener('pagehide', () => backgroundMotion.revert(), { once: true });
-			}
-
-			document.querySelectorAll('.section-header[data-section]').forEach((header) => {
-				header.addEventListener('click', () => {
-					const content = document.getElementById(header.dataset.section);
-					const arrow = header.querySelector('.section-arrow');
-					const isClosed = content.hidden;
-
-					content.hidden = !isClosed;
-					arrow.textContent = isClosed ? '-' : '+';
-				});
-			});
-		</script>
-	</body>
-</html>
+      </section>
+    </main>
+</SiteLayout>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.expand-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const list = document.getElementById(button.getAttribute('aria-controls')!);
+      if (!list) return;
+      const expanded = button.getAttribute('aria-expanded') !== 'true';
+      list.classList.toggle('expanded', expanded);
+      button.setAttribute('aria-expanded', String(expanded));
+      button.setAttribute('aria-label', `${expanded ? 'Show latest two' : 'Show all'} ${button.closest('section')?.querySelector('h2')?.textContent}`);
+      button.querySelector('span')!.textContent = expanded ? '−' : '+';
+    });
+  });
+</script>

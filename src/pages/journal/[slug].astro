@@ -1,0 +1,37 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import JournalPhoto from '../../components/JournalPhoto.astro';
+import JournalGallery from '../../components/JournalGallery.astro';
+import { journalEntries, formatDate } from '../../data/journal';
+export function getStaticPaths() {
+  return journalEntries.map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content, frontmatter } = post;
+const base = import.meta.env.BASE_URL;
+---
+<SiteLayout title={`${frontmatter.title} — Journal`} active="journal" description={frontmatter.excerpt}>
+  <main class="journal-post">
+    <a class="back" href={`${base}journal/`}>← Journal</a>
+    <article>
+      <div class="post-date"><time datetime={frontmatter.date}>{frontmatter.dateLabel || formatDate(frontmatter.date)}</time>{frontmatter.location && <span> · {frontmatter.location}</span>}</div>
+      <h1>{frontmatter.title}</h1>
+      {frontmatter.cover && <JournalPhoto src={`${base}${frontmatter.cover.replace(/^\//, '')}`} alt={frontmatter.coverAlt || ''} protectedPhoto={frontmatter.protectPhotos} caption={frontmatter.photoCaption} />}
+      {frontmatter.gallery && <JournalGallery photos={frontmatter.gallery} protectedPhotos={frontmatter.protectPhotos} />}
+      <div class="prose"><Content /></div>
+    </article>
+  </main>
+</SiteLayout>
+<style>
+  .journal-post { max-width: 680px; }
+  .back { font-size: 15px; display: inline-block; margin-bottom: 30px; }
+  .post-date { font-size: 14px; color: #000; margin-bottom: 10px; }
+  h1 { font-size: 30px; margin-bottom: 24px; }
+  figure { margin: 24px 0; }
+  img, .prose :global(img) { display: block; max-width: 100%; height: auto; }
+  .prose { line-height: 1.4; }
+  .prose :global(p) { margin-bottom: 18px; }
+  .prose :global(figure) { margin: 28px 0; }
+  .prose :global(figcaption) { font-size: 14px; color: #000; margin-top: 8px; }
+  .prose :global(blockquote) { margin: 24px 0; padding-left: 20px; border-left: 1px solid #ccc; color: #000; }
+</style>

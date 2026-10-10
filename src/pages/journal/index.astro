@@ -1,0 +1,45 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import JournalPhoto from '../../components/JournalPhoto.astro';
+import JournalGallery from '../../components/JournalGallery.astro';
+import { journalEntries, formatDate } from '../../data/journal';
+const base = import.meta.env.BASE_URL;
+---
+<SiteLayout title="Journal — Youchul Jeong" active="journal" description="A personal journal of places, experiences, photographs, and reflections by Youchul Jeong.">
+  <main class="journal">
+    <h1>Journal</h1>
+    <p class="intro">Notes on what I see, experience, and carry with me.</p>
+    {journalEntries.length === 0 ? (
+      <div class="empty-journal"><p>A place for photographs, small discoveries, and reflections on everyday life.</p><p class="quiet">The first entry is still to come.</p></div>
+    ) : (
+      <div class="journal-entries">
+        {journalEntries.map(post => {
+          const Content = post.Content;
+          return (
+          <article class="journal-preview">
+            <div class="journal-date"><time datetime={post.frontmatter.date}>{post.frontmatter.dateLabel || formatDate(post.frontmatter.date)}</time>{post.frontmatter.location && <span> · {post.frontmatter.location}</span>}</div>
+            <h2>{post.frontmatter.title}</h2>
+            {post.frontmatter.cover && <JournalPhoto src={`${base}${post.frontmatter.cover.replace(/^\//, '')}`} alt={post.frontmatter.coverAlt || ''} protectedPhoto={post.frontmatter.protectPhotos} caption={post.frontmatter.photoCaption} />}
+            {post.frontmatter.gallery && <JournalGallery photos={post.frontmatter.gallery} protectedPhotos={post.frontmatter.protectPhotos} />}
+            <div class="prose"><Content /></div>
+          </article>
+          );
+        })}
+      </div>
+    )}
+  </main>
+</SiteLayout>
+<style>
+  .journal { max-width: 680px; min-height: 55vh; }
+  .intro { color: #000; margin-bottom: 36px; }
+  .empty-journal { border-top: 1px solid #eee; padding-top: 28px; max-width: 520px; }
+  .quiet { color: #000; font-size: 16px; }
+  .journal-preview { margin: 0 0 38px; padding-top: 24px; border-top: 1px solid #eee; }
+  .journal-date { color: #000; font-size: 14px; margin-bottom: 10px; }
+  .prose { line-height: 1.4; }
+  .prose :global(img) { display: block; max-width: 100%; height: auto; margin: 18px 0; }
+  .prose :global(p) { margin-bottom: 18px; }
+  .prose :global(figure) { margin: 28px 0; }
+  .prose :global(figcaption) { font-size: 14px; margin-top: 8px; }
+  .prose :global(blockquote) { margin: 24px 0; padding-left: 20px; border-left: 1px solid #ccc; }
+</style>

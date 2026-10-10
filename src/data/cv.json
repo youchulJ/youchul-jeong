@@ -4,14 +4,27 @@
   "email": "youchul@aegean.gr",
   "linkedin": "youchulj",
   "github": "https://github.com/youchulJ",
-  "researchgate": "https://www.researchgate.net/profile/Youchul-Jeong-2",
-  "about": "Youchul Jeong is a Ph.D. candidate in the Department of Marine Science at the University of the Aegean (Marine Remote Sensing Group - MRSG) and an External Ph.D. candidate with the Machine Learning in Earth Observation (MEO) Lab at the University of Bonn. His research aims to develop remote-sensing and machine-learning methods for detecting floating marine debris and other sea-surface features from satellite and UAV observations.",
+  "about": "Youchul Jeong is a Ph.D. candidate in Marine Science at the University of the Aegean and a member of the Marine Remote Sensing Group (MRSG). He is also an External Ph.D. candidate with the Machine Learning in Earth Observation (MEO) Lab at the University of Bonn. His research focuses on detecting floating marine debris using satellite and UAV imagery, remote sensing, and machine learning.",
   "experience": [
+    {
+      "position": "Plastic Litter Project 2026 (PLP2026)",
+      "institution": "",
+      "period": "Jun - Aug 2026",
+      "description": "Led the design and field deployment of 18–90 m² floating plastic-litter targets in the Gulf of Gera, Lesvos. Led satellite and drone imagery processing and analysis to assess floating plastic detection across multiple spatial and spectral scales.",
+      "link": "https://plp.aegean.gr/"
+    },
     {
       "position": "Plastic Litter Project 2025 (PLP2025)",
       "institution": "",
       "period": "May 2025",
-      "description": "Constructed floating plastic-litter targets using HDPE tarps and wooden planks in 1 m², 2 m², and 3 m² configurations for the PLP2025 field experiment. Assisted with field deployment, monitoring, repair, and retrieval of six target units in the Gulf of Gera, Lesvos."
+      "description": "Constructed floating plastic-litter targets using HDPE tarps and wooden planks in 1 m², 2 m², and 3 m² configurations for the PLP2025 field experiment. Assisted with field deployment, monitoring, repair, and retrieval of six target units in the Gulf of Gera, Lesvos.",
+      "link": "https://plp.aegean.gr/plastic-litter-project-2025/"
+    },
+    {
+      "position": "Drone Analysis of Beach Safety and Beachgoer Behavior",
+      "institution": "",
+      "period": "Nov 2023; Feb - Aug 2024",
+      "description": "Orchestrated drone flights and implemented YOLOv8 to observe beach safety. Conducted surveys of beachgoer populations to understand motivations and improve beach conditions."
     },
     {
       "position": "Classification and Monitoring of Floating Marine Macro Litter (MSc Thesis)",
@@ -26,10 +39,28 @@
       "description": "Applied drone technology and Applied Drone Automatic Flight Advisory in open ocean conditions. Developed a CNN model for detecting marine debris for Socheongcho Ocean Research Station."
     },
     {
+      "position": "Drone Survey of Spotted Seal Population",
+      "institution": "",
+      "period": "May 2022 - Nov 2023",
+      "description": "Conducted drone surveys on Baekryeong Island to assess spotted seal populations and gather high-resolution imagery."
+    },
+    {
       "position": "Floating Marine Litter Survey",
       "institution": "Korea Institute of Ocean Science & Technology (KIOST)",
       "period": "May 2023 - Oct 2023",
       "description": "Worked with Dr. Won Joon Shim (KIOST) to conduct on-site surveys of microplastics and floating marine litter. Compared and analyzed results of drone and multispectral sensor surveys."
+    },
+    {
+      "position": "Coastal Topography and Seabed Survey",
+      "institution": "",
+      "period": "Jul - Aug 2023",
+      "description": "Conducted RTK-GPS and drone surveys to analyze coastal sand loss and seabed depth change."
+    },
+    {
+      "position": "UAV Team Leader",
+      "institution": "Korean Air Force",
+      "period": "May 2016 - May 2018",
+      "description": "Assembled military training UAVs, managed GPS element procurement, and led team activities."
     }
   ],
   "education": [
@@ -60,7 +91,7 @@
       "year": "2024",
       "month": "December",
       "link": "https://www.mdpi.com/2072-4292/16/23/4347",
-      "image": "/youchul-jeong-cv/images/publications/floating-marine-litter.jpg",
+      "image": "/youchul-jeong/images/publications/floating-marine-litter.jpg",
       "imageAlt": "Graphical abstract showing drone survey, data processing, deep learning, and floating marine macro-litter classification",
       "imageLabel": "Graphical abstract · Remote Sensing"
     },
@@ -71,7 +102,7 @@
       "year": "2024",
       "month": "May",
       "link": "https://www.mdpi.com/2072-4292/16/13/2275",
-      "image": "/youchul-jeong-cv/images/publications/ocean-wave-current.jpg",
+      "image": "/youchul-jeong/images/publications/ocean-wave-current.jpg",
       "imageAlt": "Surface current trajectory, vector, velocity, and vorticity maps derived from UAV observations",
       "imageLabel": "Figure 8 · Remote Sensing"
     }
@@ -94,7 +125,68 @@
       "position": "Research Assistant",
       "institution": "Marine Research Institute, Pusan National University",
       "period": "Sep - Dec 2022; Sep 2023 - Apr 2025",
-      "description": "Conducted drone fieldwork and developed machine-learning methods using multispectral imagery for marine-debris detection and remote-sensing research."
+      "description": "Conducted drone fieldwork and developed deep-learning methods to detect marine debris. Developed remote-sensing methodologies using drones, AI, and multispectral sensors."
+    }
+  ],
+  "presentations": [
+    {
+      "year": "2023",
+      "event": "11th Asian Workshop on Ocean Color",
+      "location": "Nagoya, Japan",
+      "type": "Poster presentation",
+      "title": "A Study on Monitoring Floating Marine Macro Litter using a Multi-spectral Sensor and Classification based on Deep Learning."
+    },
+    {
+      "year": "2023",
+      "event": "Korea Ocean Research Conference",
+      "location": "Seoul, South Korea",
+      "type": "Oral presentation",
+      "title": "A Study on Monitoring Floating Marine Macro Litter using a Multi-spectral Sensor and Classification based on Deep Learning."
+    },
+    {
+      "year": "2023",
+      "event": "Ocean & Atmosphere Science Interdisciplinary Studies Conference",
+      "location": "Busan, South Korea",
+      "type": "Oral presentation",
+      "title": "A Study on Monitoring Floating Marine Macro Litter using a Multi-spectral Sensor and Classification based on Deep Learning."
+    },
+    {
+      "year": "2023",
+      "event": "European Geosciences Union General Assembly",
+      "location": "Vienna, Austria",
+      "type": "Poster presentation",
+      "title": "A Study on Classification and Monitoring of Floating Marine Macro Litter using Multispectral Imagery in UAV and Deep Learning."
+    },
+    {
+      "year": "2022",
+      "event": "10th Asian Workshop on Ocean Color",
+      "location": "Indonesia",
+      "type": "Oral presentation",
+      "title": "A Study on Classification and Monitoring of Floating Marine Macro Litter using Multispectral Imagery in UAV and Deep Learning."
+    }
+  ],
+  "scholar": "https://scholar.google.com/citations?user=2ITo4VoAAAAJ&hl=en&oi=ao",
+  "teaching": [
+    {
+      "date": "2025 Dec 18",
+      "title": "Marine Debris in Circular Blue Economy",
+      "course": "SBE3012",
+      "institution": "Universiti Malaysia Terengganu",
+      "description": "Taught “Marine litter detection” as part of SustainaBlue HEIs in Malaysia and Indonesia."
+    },
+    {
+      "date": "2023 · Spring",
+      "title": "Interpretation of Marine Data",
+      "course": "MS3200990",
+      "institution": "Pusan National University",
+      "description": "Led multispectral Sargassum fieldwork for 40 undergraduate students and taught data processing with MATLAB."
+    },
+    {
+      "date": "2022, 2023 · Spring",
+      "title": "Coastal Practices Survey",
+      "course": "MS3200295",
+      "institution": "Pusan National University",
+      "description": "Delivered theoretical lectures on YOLOv5 installation and algorithms."
     }
   ]
 }

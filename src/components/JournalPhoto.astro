@@ -1,0 +1,21 @@
+---
+const { src, alt, protectedPhoto = false, caption } = Astro.props;
+---
+<figure class:list={['journal-photo', { 'protected-photo': protectedPhoto }]} data-protected-photo={protectedPhoto || undefined}>
+  <img src={src} alt={alt} loading="lazy" draggable={protectedPhoto ? 'false' : undefined} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-protected-photo]').forEach(photo => {
+    for (const event of ['contextmenu', 'dragstart', 'copy', 'cut']) {
+      photo.addEventListener(event, e => e.preventDefault());
+    }
+  });
+</script>
+<style>
+  .journal-photo { margin: 20px 0; }
+  img { display: block; width: 100%; height: auto; }
+  figcaption { font-size: 14px; margin-top: 8px; }
+  .protected-photo { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+  .protected-photo img { pointer-events: none; -webkit-user-drag: none; }
+</style>
