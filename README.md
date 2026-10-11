@@ -18,8 +18,12 @@ npm run build
 The site is configured for the GitHub Pages project path:
 
 ```js
-base: '/youchul-jeong/'
+base: process.env.SITE_BASE_PATH || '/youchul-jeong/'
 ```
+
+Local previews use `/youchul-jeong/`. The GitHub Pages workflow sets
+`SITE_BASE_PATH` from the repository name so navigation and assets use the
+actual deployed project path, currently `/youchul-jeong-cv/`.
 
 ## Content
 
