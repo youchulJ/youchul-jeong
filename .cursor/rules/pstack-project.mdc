@@ -1,0 +1,11 @@
+---
+description: Project-local pstack integration for this Astro portfolio
+alwaysApply: true
+---
+Read AGENTS.md and docs/pstack.md for this project's operating workflow.
+Pstack skills are in .agents/skills, shared through .cursor/skills.
+Use inherit-parent for all pstack model roles unless the user configures available models.
+Do not assume Cursor-specific tools, plugins, or model slugs exist in another host.
+For nontrivial work, consult poteto-mode and the relevant playbook; use only available tools.
+Preserve public appearance and behavior unless a requested change requires otherwise.
+Run npm run verify before proposing a release. Visually verify UI changes separately.

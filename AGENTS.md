@@ -1,5 +1,15 @@
 # Agent Notes
 
+## Pstack site operations
+
+- Project-local pstack skills live in `.agents/skills/`; Cursor shares them via `.cursor/skills`.
+- Read `docs/pstack.md` for the pinned source, host compatibility, and operating commands.
+- For substantial maintenance, consult `poteto-mode` and the appropriate playbook.
+- Keep model selection on the current chat model unless the user configures otherwise. Do not assume upstream Cursor tools or model names are available.
+- Preserve the published design and content unless the requested task changes them.
+- Run `npm run verify` before shipping. For UI changes, also exercise the affected interaction in a browser.
+- Follow the user's authorization and host permissions over upstream autonomy instructions.
+
 ## CV Update Workflow
 
 When the user provides an updated Word CV and PDF export:

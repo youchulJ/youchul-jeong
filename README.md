@@ -2,6 +2,9 @@
 
 Public academic CV website built with Astro and deployed with GitHub Pages.
 
+Project-local pstack workflows are documented in [docs/pstack.md](docs/pstack.md).
+Run `npm run verify` to build and check local links and assets before publishing.
+
 ## Local Development
 
 ```bash
