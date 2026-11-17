@@ -6,9 +6,10 @@ const researchLinks: Record<string, string> = {
   'ReSe Application LLC': 'https://www.rese-apps.com/',
   'Won Joon Shim': 'https://scholar.google.com/citations?user=ca9JdS4AAAAJ&hl=en',
   'Daniel Schläpfer': 'https://scholar.google.com/citations?user=Bw2ZWS8AAAAJ&hl=en&oi=ao',
+  'S-ORS': 'https://kors.kiost.ac.kr/eng/base?pageId=socheongcho',
 };
 function descriptionParts(description: string) {
-  return description.split(/(ReSe Application LLC|Won Joon Shim|Daniel Schläpfer)/g);
+  return description.split(/(ReSe Application LLC|Won Joon Shim|Daniel Schläpfer|S-ORS)/g);
 }
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const papers = [...cv.publications].sort((a, b) => Number(b.year) - Number(a.year) || months.indexOf(b.month) - months.indexOf(a.month));
@@ -84,9 +85,9 @@ const presentations = [...cv.presentations].sort((a, b) => Number(b.year) - Numb
               <li class="entry">
                 <div class="date">{item.period.replace(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{4})\b/g, '$1\u00a0$2')}</div>
                 <div>
-                  <p class="entry-title">{'link' in item ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.position}</a> : item.position}</p>
+                  <p class="entry-title">{'link' in item ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.position}</a> : descriptionParts(item.position).map(part => researchLinks[part] ? <a href={researchLinks[part]} target="_blank" rel="noopener noreferrer">{part}</a> : part)}</p>
                   {item.institution && !('hideInstitution' in item && item.hideInstitution) && <p>{item.institution}</p>}
-                  {!('hideDescription' in item && item.hideDescription) && <p class="meta">{descriptionParts(item.description).map(part => researchLinks[part] ? <a href={researchLinks[part]} target="_blank" rel="noopener noreferrer">{part}</a> : part)}</p>}
+                  <p class="meta">{descriptionParts(item.description).map(part => researchLinks[part] ? <a href={researchLinks[part]} target="_blank" rel="noopener noreferrer">{part}</a> : part)}</p>
                 </div>
               </li>
             ))}

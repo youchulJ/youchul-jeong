@@ -10,16 +10,14 @@
       "position": "Plastic Litter Project 2026 (PLP2026)",
       "institution": "",
       "period": "Jun - Aug 2026",
-      "hideDescription": true,
-      "description": "Led the design and field deployment of 18–90 m² floating plastic-litter targets in the Gulf of Gera, Lesvos. Led satellite and drone imagery processing and analysis to assess floating plastic detection across multiple spatial and spectral scales.",
+      "description": "Led the design and deployment of floating plastic-litter targets and analyzed satellite and UAV imagery.",
       "link": "https://plp.aegean.gr/plastic-litter-project-2026/"
     },
     {
       "position": "Plastic Litter Project 2025 (PLP2025)",
       "institution": "",
       "period": "May 2025",
-      "hideDescription": true,
-      "description": "Constructed floating plastic-litter targets using HDPE tarps and wooden planks in 1 m², 2 m², and 3 m² configurations for the PLP2025 field experiment. Assisted with field deployment, monitoring, repair, and retrieval of six target units in the Gulf of Gera, Lesvos.",
+      "description": "Built floating plastic-litter targets and assisted with their deployment, monitoring, repair, and retrieval.",
       "link": "https://plp.aegean.gr/plastic-litter-project-2025/"
     },
     {
@@ -62,8 +60,9 @@
       "description": "Conducted RTK-GPS and drone surveys to analyze coastal sand loss and seabed depth change."
     },
     {
-      "position": "UAV Team Leader",
+      "position": "Military Service in the Korean Air Force",
       "institution": "Korean Air Force",
+      "hideInstitution": true,
       "period": "May 2016 - May 2018",
       "description": "Assembled military training UAVs, managed GPS element procurement, and led team activities."
     }
