@@ -12,7 +12,7 @@ function descriptionParts(description: string) {
 }
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const papers = [...cv.publications].sort((a, b) => Number(b.year) - Number(a.year) || months.indexOf(b.month) - months.indexOf(a.month));
-const presentations = [...cv.presentations].sort((a, b) => Number(b.year) - Number(a.year));
+const presentations = [...cv.presentations].sort((a, b) => Number(b.year) - Number(a.year) || months.indexOf(b.month) - months.indexOf(a.month));
 ---
 <SiteLayout active="home">
     <main>
@@ -33,9 +33,9 @@ const presentations = [...cv.presentations].sort((a, b) => Number(b.year) - Numb
           {papers.length > 2 && <button class="expand-button" type="button" aria-expanded="false" aria-controls="papers-entries" aria-label="Show all papers"><span aria-hidden="true">+</span></button>}
         </div>
           <ul class="entries" id="papers-entries">
-            {papers.map((paper, index) => (
+            {papers.map(paper => (
               <li class="entry">
-                <div class="date">{paper.month.slice(0, 3)}{index === 0 || papers[index - 1].year !== paper.year ? ` ${paper.year}` : ''}</div>
+                <div class="date">{paper.month.slice(0, 3)} {paper.year}</div>
                 <div>
                   <a class="paper-title" href={paper.link} target="_blank" rel="noopener noreferrer">{paper.title}</a>
                   <p class="meta">{paper.authors.split(cv.name).map((part, index) => <>{index > 0 && <strong>{cv.name}</strong>}{part}</>)}</p>
@@ -82,10 +82,10 @@ const presentations = [...cv.presentations].sort((a, b) => Number(b.year) - Numb
           <ul class="entries" id="research-entries">
             {cv.experience.map(item => (
               <li class="entry">
-                <div class="date">{item.period}</div>
+                <div class="date">{item.period.replace(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{4})\b/g, '$1\u00a0$2')}</div>
                 <div>
                   <p class="entry-title">{'link' in item ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.position}</a> : item.position}</p>
-                  {item.institution && <p>{item.institution}</p>}
+                  {item.institution && !('hideInstitution' in item && item.hideInstitution) && <p>{item.institution}</p>}
                   {!('hideDescription' in item && item.hideDescription) && <p class="meta">{descriptionParts(item.description).map(part => researchLinks[part] ? <a href={researchLinks[part]} target="_blank" rel="noopener noreferrer">{part}</a> : part)}</p>}
                 </div>
               </li>
@@ -99,9 +99,9 @@ const presentations = [...cv.presentations].sort((a, b) => Number(b.year) - Numb
           {cv.presentations.length > 2 && <button class="expand-button" type="button" aria-expanded="false" aria-controls="talks-entries" aria-label="Show all conference presentations"><span aria-hidden="true">+</span></button>}
         </div>
           <ul class="entries" id="talks-entries">
-            {presentations.map((item, index) => (
+            {presentations.map(item => (
               <li class="entry">
-                <div class="date">{index === 0 || presentations[index - 1].year !== item.year ? item.year : ''}</div>
+                <div class="date">{item.month.slice(0, 3)} {item.year}</div>
                 <div><p class="entry-title">{item.event}</p><p class="venue">{item.type} · {item.location}</p></div>
               </li>
             ))}

@@ -49,8 +49,9 @@
       "description": "Conducted drone surveys on Baekryeong Island to assess spotted seal populations and gather high-resolution imagery."
     },
     {
-      "position": "Floating Marine Litter Survey",
+      "position": "Floating Marine Litter Survey with KIOST",
       "institution": "Korea Institute of Ocean Science & Technology (KIOST)",
+      "hideInstitution": true,
       "period": "May 2023 - Oct 2023",
       "description": "Worked with Dr. Won Joon Shim (KIOST) to conduct on-site surveys of microplastics and floating marine litter. Compared and analyzed results of drone and multispectral sensor surveys."
     },
@@ -93,7 +94,7 @@
       "authors": "Youchul Jeong, Jisun Shin, Jong-Seok Lee, Ji-Yeon Baek, Daniel Schläpfer, Sin-Young Kim, Jin-Yong Jeong, and Young-Heon Jo",
       "journal": "Remote Sensing, 16(23), 4347",
       "year": "2024",
-      "month": "December",
+      "month": "November",
       "link": "https://www.mdpi.com/2072-4292/16/23/4347",
       "image": "/youchul-jeong/images/publications/floating-marine-litter.jpg",
       "imageAlt": "Graphical abstract showing drone survey, data processing, deep learning, and floating marine macro-litter classification",
@@ -104,7 +105,7 @@
       "authors": "Sin-Young Kim, Jong-Seok Lee, Youchul Jeong, and Young-Heon Jo",
       "journal": "Remote Sensing, 16(13), 2275",
       "year": "2024",
-      "month": "May",
+      "month": "June",
       "link": "https://www.mdpi.com/2072-4292/16/13/2275",
       "image": "/youchul-jeong/images/publications/ocean-wave-current.jpg",
       "imageAlt": "Surface current trajectory, vector, velocity, and vorticity maps derived from UAV observations",
@@ -135,6 +136,7 @@
   "presentations": [
     {
       "year": "2023",
+      "month": "December",
       "event": "11th Asian Workshop on Ocean Color",
       "location": "Nagoya, Japan",
       "type": "Poster presentation",
@@ -142,6 +144,7 @@
     },
     {
       "year": "2023",
+      "month": "November",
       "event": "Korea Ocean Research Conference",
       "location": "Seoul, South Korea",
       "type": "Oral presentation",
@@ -149,6 +152,7 @@
     },
     {
       "year": "2023",
+      "month": "June",
       "event": "Ocean & Atmosphere Science Interdisciplinary Studies Conference",
       "location": "Busan, South Korea",
       "type": "Oral presentation",
@@ -156,6 +160,7 @@
     },
     {
       "year": "2023",
+      "month": "April",
       "event": "European Geosciences Union General Assembly",
       "location": "Vienna, Austria",
       "type": "Poster presentation",
@@ -163,6 +168,7 @@
     },
     {
       "year": "2022",
+      "month": "December",
       "event": "10th Asian Workshop on Ocean Color",
       "location": "Indonesia",
       "type": "Oral presentation",
