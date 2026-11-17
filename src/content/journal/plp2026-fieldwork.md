@@ -1,5 +1,5 @@
 ---
-title: "PLP2026"
+title: "Plastic Litter Project 2026"
 date: "2026-06-29"
 dateLabel: "June–August 2026"
 draft: false

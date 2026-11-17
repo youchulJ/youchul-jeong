@@ -10,6 +10,7 @@
       "position": "Plastic Litter Project 2026 (PLP2026)",
       "institution": "",
       "period": "Jun - Aug 2026",
+      "hideDescription": true,
       "description": "Led the design and field deployment of 18–90 m² floating plastic-litter targets in the Gulf of Gera, Lesvos. Led satellite and drone imagery processing and analysis to assess floating plastic detection across multiple spatial and spectral scales.",
       "link": "https://plp.aegean.gr/plastic-litter-project-2026/"
     },
@@ -17,6 +18,7 @@
       "position": "Plastic Litter Project 2025 (PLP2025)",
       "institution": "",
       "period": "May 2025",
+      "hideDescription": true,
       "description": "Constructed floating plastic-litter targets using HDPE tarps and wooden planks in 1 m², 2 m², and 3 m² configurations for the PLP2025 field experiment. Assisted with field deployment, monitoring, repair, and retrieval of six target units in the Gulf of Gera, Lesvos.",
       "link": "https://plp.aegean.gr/plastic-litter-project-2025/"
     },
@@ -24,12 +26,14 @@
       "position": "Drone Analysis of Beach Safety and Beachgoer Behavior",
       "institution": "",
       "period": "Nov 2023; Feb - Aug 2024",
+      "link": "https://github.com/youchulJ/Beach-Object-Detection-YOLOv8",
       "description": "Orchestrated drone flights and implemented YOLOv8 to observe beach safety. Conducted surveys of beachgoer populations to understand motivations and improve beach conditions."
     },
     {
       "position": "Classification and Monitoring of Floating Marine Macro Litter (MSc Thesis)",
       "institution": "",
       "period": "Jun 2022 - Dec 2023",
+      "link": "https://github.com/youchulJ/multispectral-marine-litter-classification",
       "description": "Utilized drones with multispectral sensors to create a custom FMML dataset. Implemented deep learning models for efficient litter classification and continuous monitoring. Incorporated drone atmospheric correction using DROACOR in collaboration with Dr. Daniel Schläpfer (ReSe Application LLC). Worked with advisors to promote conceptual framework and fieldwork at international conferences."
     },
     {
@@ -168,21 +172,21 @@
   "scholar": "https://scholar.google.com/citations?user=2ITo4VoAAAAJ&hl=en&oi=ao",
   "teaching": [
     {
-      "date": "2025 Dec 18",
+      "date": "18 Dec 2025",
       "title": "Marine Debris in Circular Blue Economy",
       "course": "SBE3012",
       "institution": "Universiti Malaysia Terengganu",
       "description": "Taught “Marine litter detection” as part of SustainaBlue HEIs in Malaysia and Indonesia."
     },
     {
-      "date": "2023 · Spring",
+      "date": "Spring 2023",
       "title": "Interpretation of Marine Data",
       "course": "MS3200990",
       "institution": "Pusan National University",
       "description": "Led multispectral Sargassum fieldwork for 40 undergraduate students and taught data processing with MATLAB."
     },
     {
-      "date": "2022, 2023 · Spring",
+      "date": "Spring 2022, 2023",
       "title": "Coastal Practices Survey",
       "course": "MS3200295",
       "institution": "Pusan National University",

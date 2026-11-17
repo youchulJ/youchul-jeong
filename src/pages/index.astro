@@ -12,6 +12,7 @@ function descriptionParts(description: string) {
 }
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const papers = [...cv.publications].sort((a, b) => Number(b.year) - Number(a.year) || months.indexOf(b.month) - months.indexOf(a.month));
+const presentations = [...cv.presentations].sort((a, b) => Number(b.year) - Number(a.year));
 ---
 <SiteLayout active="home">
     <main>
@@ -32,18 +33,31 @@ const papers = [...cv.publications].sort((a, b) => Number(b.year) - Number(a.yea
           {papers.length > 2 && <button class="expand-button" type="button" aria-expanded="false" aria-controls="papers-entries" aria-label="Show all papers"><span aria-hidden="true">+</span></button>}
         </div>
           <ul class="entries" id="papers-entries">
-            {papers.map(paper => (
+            {papers.map((paper, index) => (
               <li class="entry">
-                <div class="date">{paper.year} {paper.month.slice(0, 3)}</div>
+                <div class="date">{paper.month.slice(0, 3)}{index === 0 || papers[index - 1].year !== paper.year ? ` ${paper.year}` : ''}</div>
                 <div>
                   <a class="paper-title" href={paper.link} target="_blank" rel="noopener noreferrer">{paper.title}</a>
-                  <p class="meta">{paper.authors}</p>
-                  <p class="venue"><em>{paper.journal}</em></p>
+                  <p class="meta">{paper.authors.split(cv.name).map((part, index) => <>{index > 0 && <strong>{cv.name}</strong>}{part}</>)}</p>
                 </div>
               </li>
             ))}
           </ul>
 
+      </section>
+      <section id="research-visits" aria-labelledby="research-visits-heading">
+        <div class="section-heading">
+          <h2 id="research-visits-heading">Research Visits</h2>
+        </div>
+        <ul class="entries">
+          <li class="entry">
+            <div class="date">3–10 Nov 2026</div>
+            <div>
+              <p class="entry-title"><a href="https://meo-lab.com/" target="_blank" rel="noopener noreferrer">Machine Learning in Earth Observation (MEO) Lab</a></p>
+              <p class="venue">University of Bonn · Bonn, Germany</p>
+            </div>
+          </li>
+        </ul>
       </section>
       <section id="teaching" aria-labelledby="teaching-heading">
         <div class="section-heading">
@@ -72,7 +86,7 @@ const papers = [...cv.publications].sort((a, b) => Number(b.year) - Number(a.yea
                 <div>
                   <p class="entry-title">{'link' in item ? <a href={item.link} target="_blank" rel="noopener noreferrer">{item.position}</a> : item.position}</p>
                   {item.institution && <p>{item.institution}</p>}
-                  <p class="meta">{descriptionParts(item.description).map(part => researchLinks[part] ? <a href={researchLinks[part]} target="_blank" rel="noopener noreferrer">{part}</a> : part)}</p>
+                  {!('hideDescription' in item && item.hideDescription) && <p class="meta">{descriptionParts(item.description).map(part => researchLinks[part] ? <a href={researchLinks[part]} target="_blank" rel="noopener noreferrer">{part}</a> : part)}</p>}
                 </div>
               </li>
             ))}
@@ -85,10 +99,10 @@ const papers = [...cv.publications].sort((a, b) => Number(b.year) - Number(a.yea
           {cv.presentations.length > 2 && <button class="expand-button" type="button" aria-expanded="false" aria-controls="talks-entries" aria-label="Show all conference presentations"><span aria-hidden="true">+</span></button>}
         </div>
           <ul class="entries" id="talks-entries">
-            {cv.presentations.map(item => (
+            {presentations.map((item, index) => (
               <li class="entry">
-                <div class="date">{item.year}</div>
-                <div><p class="entry-title">{item.event}</p><p class="venue">{item.type} · {item.location}</p><p class="meta">{item.title}</p></div>
+                <div class="date">{index === 0 || presentations[index - 1].year !== item.year ? item.year : ''}</div>
+                <div><p class="entry-title">{item.event}</p><p class="venue">{item.type} · {item.location}</p></div>
               </li>
             ))}
           </ul>

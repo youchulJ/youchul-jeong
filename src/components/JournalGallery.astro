@@ -1,10 +1,10 @@
 ---
 import JournalPhoto from './JournalPhoto.astro';
-const { photos, protectedPhotos = false } = Astro.props;
+const { photos, protectedPhotos = false, title = 'Photo' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 <div class="photo-journal" data-photo-journal>
-  <div class="photo-track" tabindex="0" role="region" aria-label="PLP2026 photo journal. Swipe or use the arrow buttons to browse.">
+  <div class="photo-track" tabindex="0" role="region" aria-label={`${title} photo journal. Swipe or use the arrow buttons to browse.`}>
     {photos.map(photo => <div class="photo-slide"><JournalPhoto src={`${base}${photo.src}`} alt={photo.alt} caption={photo.caption} protectedPhoto={protectedPhotos} /></div>)}
   </div>
   <div class="photo-controls">

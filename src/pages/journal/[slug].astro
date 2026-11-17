@@ -17,7 +17,7 @@ const base = import.meta.env.BASE_URL;
       <div class="post-date"><time datetime={frontmatter.date}>{frontmatter.dateLabel || formatDate(frontmatter.date)}</time>{frontmatter.location && <span> · {frontmatter.location}</span>}</div>
       <h1>{frontmatter.title}</h1>
       {frontmatter.cover && <JournalPhoto src={`${base}${frontmatter.cover.replace(/^\//, '')}`} alt={frontmatter.coverAlt || ''} protectedPhoto={frontmatter.protectPhotos} caption={frontmatter.photoCaption} />}
-      {frontmatter.gallery && <JournalGallery photos={frontmatter.gallery} protectedPhotos={frontmatter.protectPhotos} />}
+      {frontmatter.gallery && <JournalGallery photos={frontmatter.gallery} protectedPhotos={frontmatter.protectPhotos} title={frontmatter.title} />}
       <div class="prose"><Content /></div>
     </article>
   </main>
